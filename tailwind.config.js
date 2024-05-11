@@ -1,23 +1,19 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
-        primary:"#2D8E00",
-        secondary:"#393939",
+        primary: "#2D8E00",
+        secondary: "#393939",
         secondaryFifty: "#999a9b",
-        buttonPrimary:"#EA7A9A",
-
+        buttonPrimary: "#EA7A9A",
       },
       fontFamily: {
-        'sans': ['Mulish', 'sans-serif'],
+        sans: ["Mulish", "sans-serif"],
       },
       backgroundImage: {
-        'feature-cardbg': "url('/src/assets/img/cardBg.png')",
-        
+        "feature-cardbg": "url('/src/assets/img/cardBg.png')",
       },
       screens: {
         "md-1200": "1200px",
@@ -33,4 +29,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};

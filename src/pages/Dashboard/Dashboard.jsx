@@ -9,9 +9,7 @@ import weeklyOverview from "../../assets/weeklyOverwiewGraph.svg";
 
 const Dashboard = () => {
   return (
-    <div>
-      <Sidebar />
-      <Navbar />
+    <div className="font-sans">
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
           <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-16">
@@ -79,27 +77,29 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="flex p-8 gap-8 items-center">
-            <div><span className=" text-[22px] font-semibold">Latest Games</span></div>
-            <div className="flex flex-wrap gap-4">
-                <div className="bg-primary text-white w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-                    Cricket
-                </div>
-                <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-                    Football
-                </div>
-                <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-                    Badminton
-                </div>
-                <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-                    Golf
-                </div>
-                <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-                    Tennis
-                </div>
-                <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-                    Basketball
-                </div>
+          <div>
+            <span className=" text-[22px] font-semibold">Latest Games</span>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <div className="bg-primary text-white w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+              Cricket
             </div>
+            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+              Football
+            </div>
+            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+              Badminton
+            </div>
+            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+              Golf
+            </div>
+            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+              Tennis
+            </div>
+            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+              Basketball
+            </div>
+          </div>
         </div>
       </div>
     </div>
