@@ -1,14 +1,14 @@
 import React from "react";
 import img from "../assets/da.png"
 
-const Navbar = () => {
+const Navbar = ({text}) => {
   return (
     <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] min-h-[120px] flex items-center">
       <nav className="bg-white border-gray-200 w-full">
         <div className=" flex flex-col md:flex-row items-center justify-between p-4 ">
           <a className="flex items-center space-x-3 rtl:space-x-reverse">
             <span className="self-center text-4xl font-semibold ml-6">
-              Dashboard
+              {text}
             </span>
           </a>
           <div>
