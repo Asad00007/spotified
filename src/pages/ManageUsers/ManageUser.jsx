@@ -18,7 +18,7 @@ const ManageUser = () => {
         <div className=" ml-8 flex justify-start items-center max-w-[834.58px] flex-wrap mb-12 md:mb-24 lg:mb-0 w-full h-[40px] md:h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
             <div className="flex justify-center items-center px-2 md:px-12">
-              <img src={filterIcon} alt="" />
+              <img className="h-[20px] md:h-auto w-[20px] md:w-auto" src={filterIcon} alt="" />
             </div>
             <div>
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
