@@ -17,17 +17,17 @@ const Dashboard = () => {
       <Navbar text={text} />
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
-          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-16">
+          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 lg:px-16">
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
             <div className="flex flex-col flex-wrap items-center md:flex-row gap-4 mt-0 md:mt-20">
-              <img src={totalGames} alt="" />
-              <img src={organizer} alt="" />
-              <img src={user} alt="" />
+              <img className=" w-[265px] h-[265px] lg:h-auto lg:w-auto" src={totalGames} alt="" />
+              <img className=" w-[265px] h-[265px] lg:h-auto lg:w-auto" src={organizer} alt="" />
+              <img className=" w-[265px] h-[265px] lg:h-auto lg:w-auto" src={user} alt="" />
             </div>
           </div>
-          <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-16">
+          <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-2 lg:px-16">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <span className="w-full text-xl font-semibold text-[#05004E]">
                 Weekly Overview
@@ -81,27 +81,27 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="flex p-8 gap-8 items-center">
+        <div className="flex flex-wrap p-8 gap-8 items-center">
           <div>
             <span className=" text-[22px] font-semibold">Latest Games</span>
           </div>
           <div className="flex flex-wrap gap-4">
-            <div className="bg-primary text-white w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="bg-primary text-white w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Cricket
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Football
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Badminton
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Golf
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Tennis
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Basketball
             </div>
           </div>
