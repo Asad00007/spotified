@@ -11,9 +11,9 @@ const Settings = () => {
       <Navbar text={"Settings"} />
       <div className="bg-[#FAFBFC] lg:w-[calc(100vw - 345px)] lg:ml-[345px] flex items-center justify-center font-sans">
         <div className="flex flex-col bg-white w-[95%] min-h-[882px] mx-auto max-w-full px-7 my-10 rounded-2xl">
-          <div className="flex flex-col md:flex-row gap-6">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-6">
             <div className="flex flex-col gap-1 min-w-[230px] md-1200:min-w-[300px] md:border-r  ">
-              <div className="py-7">
+              <div className="py-3 md:py-7">
                 <h1 className="font-semibold text-2xl text-[#393939]">
                   Create Promo Code
                 </h1>
@@ -22,7 +22,7 @@ const Settings = () => {
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center justify-center md-1100:px-3 lg-1350:px-28 py-7">
+            <div className="flex flex-col items-center justify-center md-1100:px-3 lg-1350:px-28 py-3 md:py-7">
               <h1 className="text-2xl font-semibold text-[#393939] self-start mb-2">
                 Banner Information
               </h1>
@@ -67,9 +67,9 @@ const Settings = () => {
               </button>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-6">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-6">
             <div className="flex flex-col gap-1 min-w-[230px] md-1200:min-w-[300px] md:border-r  ">
-              <div className="py-7">
+              <div className="py-3 md:py-7">
                 <h1 className="font-semibold text-2xl text-[#393939]">
                   Create Notifications
                 </h1>
@@ -80,7 +80,7 @@ const Settings = () => {
               </div>
             </div>
 
-            <div className="flex flex-col items-center justify-center md-1100:px-3  lg-1350:px-28 w-full py-7">
+            <div className="flex flex-col items-center justify-center md-1100:px-3  lg-1350:px-28 w-full py-3 md:py-7">
               <h1 className="text-2xl font-semibold text-[#393939] self-start mb-2">
                 Create Notification
               </h1>
