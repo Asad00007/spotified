@@ -67,7 +67,7 @@ const ManageUser = () => {
         </div>
         <div className="h-0 md:h-6"></div>
 
-        <div className="relative overflow-x-auto rounded-[15px]">
+        <div className="relative overflow-x-auto rounded-[15px] m-6">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 border-collapse ">
             <thead className="text-lg bg-[#2D8E0080] h-[65px] text-white rounded-t-lg">
               <tr>
