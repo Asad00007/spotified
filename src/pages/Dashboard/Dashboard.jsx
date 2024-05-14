@@ -17,23 +17,23 @@ const Dashboard = () => {
       <Navbar text={text} />
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
-          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 lg:px-16">
+          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-2 lg-1350:px-2 lg-1500:px-12 lg-1780:px-16">
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
-            <div className="flex flex-col flex-wrap items-center md:flex-row gap-4 mt-0 md:mt-20">
+            <div className="flex flex-col items-center md:flex-row gap-2 mt-0 md:mt-20">
               <img
-                className=" w-[265px] h-[265px] lg:h-auto lg:w-auto"
+                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1190:w-[120px] md-1190:h-[120px] lg-1350:h-[145px] lg-1350:w-[145px] lg-1500:h-[160px] lg-1500:w-[160px] lg-1780:h-auto lg-1780:w-auto"
                 src={totalGames}
                 alt=""
               />
               <img
-                className=" w-[265px] h-[265px] lg:h-auto lg:w-auto"
+                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1190:w-[120px] md-1190:h-[120px] lg-1350:h-[145px] lg-1350:w-[145px] lg-1500:h-[160px] lg-1500:w-[160px] lg-1780:h-auto lg-1780:w-auto"
                 src={organizer}
                 alt=""
               />
               <img
-                className=" w-[265px] h-[265px] lg:h-auto lg:w-auto"
+                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1190:w-[120px] md-1190:h-[120px] lg-1350:h-[145px] lg-1350:w-[145px] lg-1500:h-[160px] lg-1500:w-[160px] lg-1780:h-auto lg-1780:w-auto"
                 src={user}
                 alt=""
               />
