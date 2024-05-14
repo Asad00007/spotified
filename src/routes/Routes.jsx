@@ -9,6 +9,7 @@ import OrganizerRequest from "../pages/OrganizerRequest/OrganizerRequest";
 import Settings from "../pages/Settings/Settings";
 import Profile from "../pages/Profile/Profile";
 import Messages from "../pages/Messages/Messages";
+import Communities from "../pages/Communities/Communities";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
         <Route path="/manage-users" element={<ManageUser />} />
         <Route path="/manage-organizer" element={<ManageOrganizer />} />
         <Route path="/organizer-request" element={<OrganizerRequest />} />
+        <Route path="/manage-communities" element={<Communities />} />
         <Route path="/messages" element={<Messages />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />

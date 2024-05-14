@@ -2,111 +2,70 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import { FaChevronDown, FaSmile } from "react-icons/fa";
-import MessageProfile from "../../assets/img/MessageProfile.svg";
+import footballcommunity from "../../assets/img/footballcommunity.svg";
+import footballcomNav from "../../assets/img/footballcomNav.svg";
+import basketBallcomNav from "../../assets/img/basketBallcomNav.svg";
+import tenniscomNav from "../../assets/img/tenniscomNav.svg";
+import golfcomNav from "../../assets/img/golfcomNav.svg";
 import ProfileRounded from "../../assets/img/ProfileRounded.svg";
-import ProfileRounded2 from "../../assets/img/ProfileRounded2.svg";
-import ProfileRounded3 from "../../assets/img/ProfileRounded3.svg";
-import MessageImage from "../../assets/img/MessageImage.svg";
+import williamPic from "../../assets/img/williamPic.svg";
+import dotsThree from "../../assets/img/dotsThree.svg";
+import dotsThreeVertical from "../../assets/img/dotsThreeVertical.svg";
 import Mic from "../../assets/img/Mic.svg";
 import Smile from "../../assets/img/Smile.svg";
 import PaperClip from "../../assets/img/paperclip.svg";
 import PaperPlane from "../../assets/img/paper-plane.svg";
 
-const Messages = () => {
+const Communities = () => {
   const [current, setCurrent] = useState(1);
   const data = [
     {
-      img: ProfileRounded,
-      name: "Ope",
+      img: footballcomNav,
+      name: "Football Community",
       time: "4:27pm",
-      status: "active",
+      status: "unread",
+      unreadMessage: 25,
       message:
         "Gee, its been good news all day. i met someone special today. she's really pretty.",
       open: true,
     },
     {
-      img: ProfileRounded2,
-      name: "Bambam",
+      img: basketBallcomNav,
+      name: "Basketball Community",
       time: "4:12pm",
-      status: "active",
+      status: "read",
+      unreadMessage: 0,
       message: "Are you coming to class tomorrow? we have test.",
       open: false,
     },
     {
-      img: ProfileRounded3,
-      name: "Lucia",
+      img: golfcomNav,
+      name: "Golf Group",
       time: "3:27pm",
-      status: "away",
+      status: "read",
+      unreadMessage: 0,
       message: "I miss you dear, when are you coming to see me.",
       open: false,
     },
     {
-      img: ProfileRounded,
-      name: "Mijan",
+      img: tenniscomNav,
+      name: "Tennis Players",
       time: "3:27pm",
-      status: "away",
+      status: "read",
+      unreadMessage: 0,
       message: "Baba what sup na, you still de Lagos?",
-      open: false,
-    },
-    {
-      img: ProfileRounded3,
-      name: "Chi",
-      time: "3:00pm",
-      status: "offline",
-      message: "Have you called them?",
-      open: false,
-    },
-    {
-      img: ProfileRounded3,
-      name: "Chi",
-      time: "3:00pm",
-      status: "offline",
-      message: "Have you called them?",
-      open: false,
-    },
-    {
-      img: ProfileRounded3,
-      name: "Chi",
-      time: "3:00pm",
-      status: "offline",
-      message: "Have you called them?",
-      open: false,
-    },
-    {
-      img: ProfileRounded3,
-      name: "Chi",
-      time: "3:00pm",
-      status: "offline",
-      message: "Have you called them?",
-      open: false,
-    },
-    {
-      img: ProfileRounded3,
-      name: "Chi",
-      time: "3:00pm",
-      status: "offline",
-      message: "Have you called them?",
-      open: false,
-    },
-    {
-      img: ProfileRounded3,
-      name: "Chi",
-      time: "3:00pm",
-      status: "offline",
-      message: "Have you called them?",
       open: false,
     },
   ];
   return (
     <>
-      <Sidebar active={6} />
+      <Sidebar active={4} />
       <Navbar text={"Messages"} />
       <div className="bg-[#FAFBFC] lg:w-[calc(100vw - 345px)] lg:ml-[345px] flex items-center justify-center font-sans">
         <div className="flex bg-white w-[95%] h-[882px] mx-auto max-w-full my-10 rounded-2xl overflow-hidden shadow-md">
           <div className="flex flex-col w-[306px] border-r border-white bg-[#F9FAFB]">
             <div className="flex justify-center items-center min-h-[80px] bg-[#2D8E00] bg-opacity-50 gap-4">
-              <span className="text-white font-medium ">Recent Messages</span>
-              <FaChevronDown className="text-white" />
+              <span className="text-white font-medium "></span>
             </div>
             <div className="flex bg-[#F0F0F0] w-[274px] h-[39px] mx-auto my-2 rounded-lg items-center justify-between px-3 py-2">
               <button
@@ -141,13 +100,13 @@ const Messages = () => {
                         alt=""
                         className="w-[49px] h-[49px] object-contain"
                       />
-                      <div
-                        className={`absolute w-[12px] h-[12px]  ${
-                          item.status === "active" && "bg-[#53E04E]"
-                        } ${item.status === "away" && "bg-[#F0971D]"} ${
-                          item.status === "offline" && "bg-[#F0F0F0]"
-                        } border-2 border-black rounded-full top-12 right-0`}
-                      ></div>
+                      {item.status === "unread" && (
+                        <div
+                          className={`absolute w-[20px] h-[20px] bg-primary text-[10px] rounded-full top-1 right-[-5px] flex justify-center items-center text-white`}
+                        >
+                          {item.unreadMessage}
+                        </div>
+                      )}
                     </div>
                     <div className="flex flex-col py-2">
                       <div className="flex gap-2 items-center">
@@ -162,6 +121,9 @@ const Messages = () => {
                         {item.message}
                       </div>
                     </div>
+                    <div className="min-w-[10px] mt-3">
+                      <img src={dotsThree} alt="" />
+                    </div>
                   </div>
                 );
               })}
@@ -170,12 +132,12 @@ const Messages = () => {
           <div className="flex flex-col flex-1 relative ">
             <div className="flex gap-3 items-center px-4 min-h-[80px] bg-[#2D8E00] bg-opacity-50">
               <div className="w-[38px] h-[38px] relative">
-                <img src={MessageProfile} alt="" />
-                <div className="absolute w-[12px] h-[12px] bg-[#53E04E] border-2 border-black rounded-full bottom-0 right-0"></div>
+                <img src={footballcommunity} alt="" />
               </div>
               <div className="flex flex-col">
-                <h1 className="text-xl font-medium text-white">Ope</h1>
-                <p className="text-[12px] font-[400] text-white">Active</p>
+                <h1 className="text-xl font-medium text-white">
+                  Football Community
+                </h1>
               </div>
             </div>
             <div className="flex flex-col overflow-auto  p-5 gap-5 h-[700px]">
@@ -193,88 +155,52 @@ const Messages = () => {
                       Gee, its been good news all day. i met someone special
                       today. she's really pretty. i’ll like to talk more about
                       it but it has to be tomorrow. she should grab a drink
-                      later.
+                      later.{" "}
+                      <img
+                        className="ml-4 inline-block"
+                        src={dotsThreeVertical}
+                        alt=""
+                      />
                     </span>
                     <span className="text-[12px] font-normal text-[#393939]">
-                      Call me if you get this okay.
+                      Call me if you get this okay.{" "}
+                      <img
+                        className="ml-4 inline-block"
+                        src={dotsThreeVertical}
+                        alt=""
+                      />
                     </span>
                   </div>
                 </div>
               </div>
               <div className="flex gap-3">
-                <img src={ProfileRounded2} alt="" className="self-start" />
+                <img src={williamPic} alt="" className="self-start" />
                 <div className="flex flex-col">
                   <div className="flex items-center gap-2">
                     <span className="text-[#393939] text-[13px] font-semibold">
-                      Me
+                      William
                     </span>
                     <span className="font-extralight text-[8px]">4:27pm</span>
                   </div>
                   <div className="flex flex-col gap-2">
                     <span className="text-[12px] font-normal text-[#393939]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Officia maiores laborum deleniti veniam praesentium illo
-                      pariatur, ducimus accusamus, dolorem architecto nesciunt,
-                      optio alias et recusandae sequi? Mollitia dolorum sapiente
-                      quasi.
+                      Lorem ipsum dolor sit amet consectetur. Dictum sociis
+                      fermentum sodales nisl interdum id eget. Eget libero
+                      viverra tristique massa fringilla sit.{" "}
+                      <img
+                        className="ml-4 inline-block"
+                        src={dotsThreeVertical}
+                        alt=""
+                      />
                     </span>
                     <span className="text-[12px] font-normal text-[#393939]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Quibusdam temporibus sequi quae incidunt quod, perferendis
-                      neque similique non quisquam iusto?
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <img src={ProfileRounded} alt="" className="self-start" />
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#393939] text-[13px] font-semibold">
-                      Ope
-                    </span>
-                    <span className="font-extralight text-[8px]">4:27pm</span>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="text-[12px] font-normal text-[#393939]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Officia maiores laborum deleniti veniam praesentium illo
-                      pariatur, ducimus accusamus, dolorem architecto nesciunt,
-                      optio alias et recusandae sequi? Mollitia dolorum sapiente
-                      quasi.
-                    </span>
-                    <span className="text-[12px] font-normal text-[#393939]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Quibusdam temporibus sequi quae incidunt quod, perferendis
-                      neque similique non quisquam iusto?
-                    </span>
-                    <div>
-                      <img src={MessageImage} alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <img src={ProfileRounded2} alt="" className="self-start" />
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[#393939] text-[13px] font-semibold">
-                      Me
-                    </span>
-                    <span className="font-extralight text-[8px]">4:27pm</span>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <span className="text-[12px] font-normal text-[#393939]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Officia maiores laborum deleniti veniam praesentium illo
-                      pariatur, ducimus accusamus, dolorem architecto nesciunt,
-                      optio alias et recusandae sequi? Mollitia dolorum sapiente
-                      quasi.
-                    </span>
-                    <span className="text-[12px] font-normal text-[#393939]">
-                      Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                      Quibusdam temporibus sequi quae incidunt quod, perferendis
-                      neque similique non quisquam iusto?
+                      Lorem ipsum dolor sit amet consectetur. Integer amet sed
+                      ultrices ut. Sit lectus egestas viverra auctor.{" "}
+                      <img
+                        className="ml-4 inline-block"
+                        src={dotsThreeVertical}
+                        alt=""
+                      />
                     </span>
                   </div>
                 </div>
@@ -304,4 +230,4 @@ const Messages = () => {
   );
 };
 
-export default Messages;
+export default Communities;
