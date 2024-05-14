@@ -3,6 +3,7 @@ import img from "../assets/da.png";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import searchIcon from "../assets/searchIcon.svg";
+import { FaChevronDown } from "react-icons/fa";
 
 const Navbar = ({ text }) => {
   const location = useLocation();
@@ -36,7 +37,7 @@ const Navbar = ({ text }) => {
                 <input
                   type="search"
                   id="default-search"
-                  className="block w-[300px] md-1200:w-[513px] ml-4 h-[60px] p-4 ps-10 text-md md:text-lg text-[#737791] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
+                  className="block w-[300px] md:[400px] lg-1300:w-[513px] ml-4 h-[60px] p-4 ps-10 text-md md:text-lg text-[#737791] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
                   placeholder="Search here..."
                   required
                 />
@@ -45,10 +46,10 @@ const Navbar = ({ text }) => {
           )}
 
           <div
-            className="hidden md:flex items-center space-x-3"
+            className="hidden md:flex space-x-3"
             onClick={() => setName("Profile")}
           >
-            <Link to="/profile">
+            <Link to="/profile" className="flex gap-3">
               <img
                 src={img}
                 alt="Avatar icon"
@@ -63,6 +64,7 @@ const Navbar = ({ text }) => {
                 </span>
               </div>
             </Link>
+            <FaChevronDown className="translate-y-2" />
           </div>
           {/* <div
             className="hidden w-full md:block md:w-auto"

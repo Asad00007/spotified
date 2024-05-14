@@ -22,9 +22,21 @@ const Dashboard = () => {
               Complete Overview
             </span>
             <div className="flex flex-col flex-wrap items-center md:flex-row gap-4 mt-0 md:mt-20">
-              <img className=" w-[265px] h-[265px] lg:h-auto lg:w-auto" src={totalGames} alt="" />
-              <img className=" w-[265px] h-[265px] lg:h-auto lg:w-auto" src={organizer} alt="" />
-              <img className=" w-[265px] h-[265px] lg:h-auto lg:w-auto" src={user} alt="" />
+              <img
+                className=" w-[265px] h-[265px] lg:h-auto lg:w-auto"
+                src={totalGames}
+                alt=""
+              />
+              <img
+                className=" w-[265px] h-[265px] lg:h-auto lg:w-auto"
+                src={organizer}
+                alt=""
+              />
+              <img
+                className=" w-[265px] h-[265px] lg:h-auto lg:w-auto"
+                src={user}
+                alt=""
+              />
             </div>
           </div>
           <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-2 lg:px-16">
