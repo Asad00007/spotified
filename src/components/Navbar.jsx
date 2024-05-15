@@ -17,33 +17,33 @@ const Navbar = ({ text }) => {
             </span>
           </a>
 
-          {(location.pathname !== "/messages" ||
-            location.pathname !== "manage-communities") && (
-            <form className="lg-1350:-translate-x-16">
-              <label
-                htmlFor="default-search"
-                className="mb-2 text-xs md:text-sm font-medium text-gray-900 sr-only "
-              >
-                Search
-              </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 start-0 flex items-center py-2 pr-8 pl-6 pointer-events-none">
-                  <img
-                    className="w-[28px] h-[28px] md:w-auto md:h-auto"
-                    src={searchIcon}
-                    alt=""
+          {location.pathname !== "/messages" &&
+            location.pathname !== "/manage-communities" && (
+              <form className="lg-1350:-translate-x-16">
+                <label
+                  htmlFor="default-search"
+                  className="mb-2 text-xs md:text-sm font-medium text-gray-900 sr-only "
+                >
+                  Search
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 start-0 flex items-center py-2 pr-8 pl-6 pointer-events-none">
+                    <img
+                      className="w-[28px] h-[28px] md:w-auto md:h-auto"
+                      src={searchIcon}
+                      alt=""
+                    />
+                  </div>
+                  <input
+                    type="search"
+                    id="default-search"
+                    className="block w-[300px] md:[400px] lg-1300:w-[513px] ml-4 h-[60px] p-4 ps-10 text-md md:text-lg text-[#737791] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
+                    placeholder="Search here..."
+                    required
                   />
                 </div>
-                <input
-                  type="search"
-                  id="default-search"
-                  className="block w-[300px] md:[400px] lg-1300:w-[513px] ml-4 h-[60px] p-4 ps-10 text-md md:text-lg text-[#737791] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
-                  placeholder="Search here..."
-                  required
-                />
-              </div>
-            </form>
-          )}
+              </form>
+            )}
 
           <div
             className="hidden md:flex space-x-3"
