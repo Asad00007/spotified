@@ -43,7 +43,7 @@ const ManageOrganizer = () => {
               </div>
             </div>
             <div>
-              <img className="h-[40px] md:h-[72px] bg-[#979797]" src={lineFilter} alt="" />
+              <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
           </div>
           <div className=" flex">

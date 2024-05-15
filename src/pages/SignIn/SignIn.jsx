@@ -2,8 +2,36 @@ import React from "react";
 import Logo from "../../assets/logo.svg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const SignIn = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("email", email);
+    formData.append("password", password);
+
+    try {
+      const response = await axios.post(
+        "http://gosportified.sumizan.com/auth/login/",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Login successful:", response.data);
+      sessionStorage.setItem('access_token', response.data.data.access_token);
+    } catch (error) {
+      console.error("Error logging in:", error);
+    }
+  };
   return (
     <div className="flex flex-col md-1200:flex-row">
       <div className="flex items-center justify-center bg-primary md-1200:w-[48%]  md-1200:h-screen h-28 w-full">
@@ -13,6 +41,7 @@ const SignIn = () => {
         <form
           className="flex flex-col justify-center min-w-[390px] md-1200:min-w-[600px]"
           action=""
+          onSubmit={handleLogin}
         >
           <label className=" font-semibold text-xl " htmlFor="">
             Email
@@ -21,6 +50,8 @@ const SignIn = () => {
             className=" w-full bg-[#F3F3F3] rounded-[15px] text-secondary p-5 "
             type="email"
             placeholder="admin123@gmail.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <label className="mt-8 font-semibold text-xl" htmlFor="">
@@ -32,13 +63,11 @@ const SignIn = () => {
               placeholder="+971"
               className="w-[50px] border-r border-secondary bg-[#F3F3F3] outline-none"
               maxLength={4}
-              required
             />
             <input
               type="text"
               placeholder="123456789"
               className="flex-1 outline-none bg-[#F3F3F3]"
-              required
             />
           </div>
           <label className="mt-8 font-semibold text-xl" htmlFor="">
@@ -49,6 +78,8 @@ const SignIn = () => {
             type="password"
             placeholder="***********"
             required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <div className=" mt-8 flex justify-between items-center">
             <div className="flex gap-3">
@@ -68,12 +99,12 @@ const SignIn = () => {
             </a>
           </div>
           <div className="mt-8 flex justify-center items-center">
-            <Link to="/dashboard">
-              {" "}
-              <button className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]">
-                Sign In
-              </button>
-            </Link>
+            <button
+              type="submit"
+              className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]"
+            >
+              Sign In
+            </button>
           </div>
         </form>
       </div>

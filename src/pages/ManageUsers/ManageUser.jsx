@@ -15,9 +15,9 @@ const ManageUser = () => {
 
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="h-6"></div>
-        <div className=" ml-8 flex justify-start items-center max-w-[834.58px] flex-wrap mb-12 md:mb-24 lg:mb-0 w-[90%] h-[40px] md:h-[70px] bg-white rounded-[15px]">
+        <div className="ml-4 md:ml-8 flex justify-start items-center max-w-[834.58px] flex-wrap mb-12 md:mb-24 lg:mb-0 w-[90%] h-[40px] md:h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-12">
+            <div className="flex justify-center items-center px-2 md:px-5 lg-1350:px-12">
               <img
                 className="h-[20px] md:h-auto w-[20px] md:w-auto"
                 src={filterIcon}
@@ -29,7 +29,7 @@ const ManageUser = () => {
             </div>
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-4 md:px-12">
+            <div className="flex justify-center items-center px-2 md:px-5">
               <div className="flex justify-between w-auto md:w-[108px] items-center">
                 <span className="text-[14px]">User ID</span>
                 <img src={downArrow} alt="" />
@@ -40,7 +40,7 @@ const ManageUser = () => {
             </div>
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-10">
+            <div className="flex justify-center items-center px-2 md:px-5">
               <div className="flex justify-between w-auto md:w-[108px] items-center">
                 <span className="text-[14px]">Status</span>
                 <img src={downArrow} alt="" />
@@ -51,7 +51,7 @@ const ManageUser = () => {
             </div>
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-10">
+            <div className="flex justify-center items-center px-2 md:px-5">
               <div className="flex justify-between w-auto md:w-[108px] items-center">
                 <span className="text-[14px]">Sports</span>
                 <img src={downArrow} alt="" />
@@ -59,14 +59,14 @@ const ManageUser = () => {
             </div>
             <div>
               <img
-                className="h-[40px] md:h-[72px] bg-[#979797]"
+                className="h-[40px] md:h-[72px]"
                 src={lineFilter}
                 alt=""
               />
             </div>
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-10">
+            <div className="flex justify-center items-center px-2 md:px-5">
               <img src={deleteIcon} alt="" />
             </div>
           </div>

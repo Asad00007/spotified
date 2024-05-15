@@ -10,6 +10,7 @@ import Settings from "../pages/Settings/Settings";
 import Profile from "../pages/Profile/Profile";
 import Messages from "../pages/Messages/Messages";
 import Communities from "../pages/Communities/Communities";
+import ProtectedRouteWrapper from "../auth/ProtectedRouteWrapper";
 
 const AppRoutes = () => {
   return (
@@ -17,14 +18,14 @@ const AppRoutes = () => {
       <Routes>
         <Route path="/" element={<SignIn />} />
         <Route path="/otp" element={<OTP />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/manage-users" element={<ManageUser />} />
-        <Route path="/manage-organizer" element={<ManageOrganizer />} />
-        <Route path="/organizer-request" element={<OrganizerRequest />} />
-        <Route path="/manage-communities" element={<Communities />} />
-        <Route path="/messages" element={<Messages />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/dashboard" element={<ProtectedRouteWrapper><Dashboard /></ProtectedRouteWrapper>} />
+        <Route path="/manage-users" element={<ProtectedRouteWrapper><ManageUser /></ProtectedRouteWrapper>} />
+        <Route path="/manage-organizer" element={<ProtectedRouteWrapper><ManageOrganizer /></ProtectedRouteWrapper>} />
+        <Route path="/organizer-request" element={<ProtectedRouteWrapper><OrganizerRequest /></ProtectedRouteWrapper>} />
+        <Route path="/manage-communities" element={<ProtectedRouteWrapper><Communities /></ProtectedRouteWrapper>} />
+        <Route path="/messages" element={<ProtectedRouteWrapper><Messages /></ProtectedRouteWrapper>} />
+        <Route path="/settings" element={<ProtectedRouteWrapper><Settings /></ProtectedRouteWrapper>} />
+        <Route path="/profile" element={<ProtectedRouteWrapper><Profile /></ProtectedRouteWrapper>} />
       </Routes>
     </Router>
   );
