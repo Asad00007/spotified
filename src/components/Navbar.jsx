@@ -8,7 +8,7 @@ import { FaChevronDown } from "react-icons/fa";
 const Navbar = ({ text }) => {
   const location = useLocation();
   return (
-    <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] min-h-[120px] flex items-center">
+    <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] h-auto md:min-h-[120px] flex items-center">
       <nav className="bg-white border-gray-200 w-full">
         <div className=" flex flex-col md:flex-row justify-between items-center  p-4 gap-2">
           <a className="flex items-center space-x-3 rtl:space-x-reverse w-[200px] lg-1350:w-[350px]">
