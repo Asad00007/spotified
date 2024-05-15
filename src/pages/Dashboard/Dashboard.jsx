@@ -3,8 +3,8 @@ import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import sportsImg from "../../assets/sports.svg";
 import totalGames from "../../assets/totalGames.svg";
-import organizer from "../../assets/organizer.svg";
-import user from "../../assets/users.svg";
+import union from "../../assets/union.svg";
+import customerIconNew from "../../assets/customerIconNew.svg";
 import weeklyOverview from "../../assets/weeklyOverwiewGraph.svg";
 import firstImg from "../../assets/first.png";
 import secondImg from "../../assets/second.png";
@@ -21,33 +21,32 @@ const Dashboard = () => {
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
-            <div className="flex flex-col items-center md:flex-row gap-2 md:gap-6  mt-0 md:mt-20">
-              <div className="relative min-w-fit">
-                <img
-                  src={sportsImg}
-                  alt=""
-                  className="absolute left-[17%] top-[15%] w-[35px] h-[35px] md:w-[13px] md:h-[13px] lg-1350:h-[16px] lg-1350:w-[16px] lg-1500:h-[18px] lg-1500:w-[18px] lg-1780:h-[22px] lg-1780:w-[22px]"
-                />
-                <img
-                  className="w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
-                  src={totalGames}
-                  alt=""
-                />
+            <div className="flex flex-col items-center md:flex-row gap-2 md-800:gap-4 md-950:gap-6 lg:gap-2 md-1100:gap-5 lg-1780:gap-6 mt-0 md:mt-20">
+              {/* First Orange */}
+              <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#FFF4DE] rounded-2xl p-6 pt-5 justify-between">
+                <div className="rounded-full bg-[#FF947A] w-fit p-3 md:p-[5px] md-1000:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2"><img src={sportsImg} alt="" className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] md-1000:w-[10px] md-1000:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"/></div>
+                <div className="text-[#FF947A] md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">358</div>
+                <div className=" text-2xl md:text-[10px] md-1000:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">Total Games</div>
+                <div className="text-[#FF947A] text-lg md:text-[8px] md-1000:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">+5% from yesterday</div>
               </div>
-              <img
-                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
-                src={organizer}
-                alt=""
-              />
-              <img
-                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
-                src={user}
-                alt=""
-              />
+              {/* Second Green */}
+              <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#D7FFC5] rounded-2xl p-6 pt-5 justify-between">
+                <div className="rounded-full bg-[#2D8E00] w-fit p-3 md:p-[5px] md-1000:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2"><img src={union} alt="" className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] md-1000:w-[10px] md-1000:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"/></div>
+                <div className="text-[#2D8E00] md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">340</div>
+                <div className=" text-2xl md:text-[10px] md-1000:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">Total Organizers</div>
+                <div className="text-[#2D8E00] text-lg md:text-[8px] md-1000:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">+1,2% from yesterday</div>
+              </div>
+              {/* Third Purple */}
+              <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#F3E8FF] rounded-2xl p-6 pt-5 justify-between">
+                <div className="rounded-full bg-[#BF83FF] w-fit p-3 md:p-[5px] md-1000:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2"><img src={customerIconNew} alt="" className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] md-1000:w-[10px] md-1000:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"/></div>
+                <div className="text-[#BF83FF] md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">5.6k</div>
+                <div className=" text-2xl md:text-[10px] md-1000:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">Total Users</div>
+                <div className="text-[#BF83FF] text-lg md:text-[8px] md-1000:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">0,5% from yesterday</div>
+              </div>
             </div>
           </div>
           <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-2 lg:px-16 shadow-sm">
-            <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex flex-col md:flex-row justify-between">
               <span className="w-full text-xl font-semibold text-[#05004E]">
                 Weekly Overview
               </span>
