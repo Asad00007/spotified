@@ -2,23 +2,22 @@ import React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useState } from "react";
-import sidebarLogo from "../assets/sidebarLogo.svg"
+import sidebarLogo from "../assets/sidebarLogo.svg";
 import dashboard from "../assets/sidebar/dashboard.svg";
-import dashwhite from "../assets/sidebar/dashwhite.svg"
-import users from "../assets/sidebar/users.svg"
-import userwhite from "../assets/sidebar/userwhite.svg"
-import organizer from "../assets/sidebar/organizer.svg"
-import organizerwhite from "../assets/sidebar/organizerwhite.svg"
-import community from "../assets/sidebar/community.svg"
-import communitywhite from "../assets/sidebar/communitywhite.svg"
-import request from "../assets/sidebar/request.svg"
-import requestwhite from "../assets/sidebar/requestwhite.svg"
-import message from "../assets/sidebar/message.svg"
-import messagewhite from "../assets/sidebar/messagewhite.svg"
-import setting from "../assets/sidebar/setting.svg"
-import settingwhite from "../assets/sidebar/settingwhite.svg"
-import signoutwhite from "../assets/sidebar/signoutwhite.svg"
-
+import dashwhite from "../assets/sidebar/dashwhite.svg";
+import users from "../assets/sidebar/users.svg";
+import userwhite from "../assets/sidebar/userwhite.svg";
+import organizer from "../assets/sidebar/organizer.svg";
+import organizerwhite from "../assets/sidebar/organizerwhite.svg";
+import community from "../assets/sidebar/community.svg";
+import communitywhite from "../assets/sidebar/communitywhite.svg";
+import request from "../assets/sidebar/request.svg";
+import requestwhite from "../assets/sidebar/requestwhite.svg";
+import message from "../assets/sidebar/message.svg";
+import messagewhite from "../assets/sidebar/messagewhite.svg";
+import setting from "../assets/sidebar/setting.svg";
+import settingwhite from "../assets/sidebar/settingwhite.svg";
+import signoutwhite from "../assets/sidebar/signoutwhite.svg";
 
 const Sidebar = ({ active }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -110,14 +109,18 @@ const Sidebar = ({ active }) => {
                 }`}
               >
                 {active === 1 ? (
-                 <img src={dashboard}></img>
+                  <img src={dashboard}></img>
                 ) : (
                   <img src={dashwhite}></img>
                 )}
 
-                <span className={` ${
-                  active === 1 ? "font-semibold text-lg" : " font-normal"
-                }`}>Dashboard</span>
+                <span
+                  className={` ${
+                    active === 1 ? "font-semibold text-lg" : " font-normal"
+                  }`}
+                >
+                  Dashboard
+                </span>
               </a>
             </li>
             <li className="w-[252px]">
@@ -127,15 +130,17 @@ const Sidebar = ({ active }) => {
                   active === 2 ? "bg-primary text-white" : "text-secondary"
                 }`}
               >
-               {active === 2 ? (
-                 <img src={users}></img>
+                {active === 2 ? (
+                  <img src={users}></img>
                 ) : (
                   <img src={userwhite}></img>
                 )}
 
-                <span className={`flex-1 ${
-                  active === 2 ? "font-semibold text-lg" : " font-normal"
-                }`}>
+                <span
+                  className={`flex-1 ${
+                    active === 2 ? "font-semibold text-lg" : " font-normal"
+                  }`}
+                >
                   Manage Users
                 </span>
               </a>
@@ -148,16 +153,17 @@ const Sidebar = ({ active }) => {
                 }`}
               >
                 {active === 3 ? (
-                 <img src={organizer}></img>
+                  <img src={organizer}></img>
                 ) : (
                   <img src={organizerwhite}></img>
                 )}
-                
 
-                <span className={`flex-1 ${
-                  active === 3 ? "font-semibold " : " font-normal"
-                }`}>
-                  Manage Oraganizer
+                <span
+                  className={`flex-1 ${
+                    active === 3 ? "font-semibold " : " font-normal"
+                  }`}
+                >
+                  Manage Organizer
                 </span>
               </a>
             </li>
@@ -169,14 +175,16 @@ const Sidebar = ({ active }) => {
                 }`}
               >
                 {active === 4 ? (
-                 <img src={community}></img>
+                  <img src={community}></img>
                 ) : (
                   <img src={communitywhite}></img>
                 )}
 
-                <span className={`flex-1 ${
-                  active === 4 ? "font-semibold" : " font-normal"
-                }`}>
+                <span
+                  className={`flex-1 ${
+                    active === 4 ? "font-semibold" : " font-normal"
+                  }`}
+                >
                   Manage Communities
                 </span>
               </a>
@@ -189,15 +197,18 @@ const Sidebar = ({ active }) => {
                 }`}
               >
                 {active === 5 ? (
-                 <img src={request}></img>
+                  <img src={request}></img>
                 ) : (
                   <img src={requestwhite}></img>
                 )}
 
-
-                <span className={`flex-1 ${
-                  active === 5 ? "font-semibold text-lg" : " font-normal"
-                }`}>Requests</span>
+                <span
+                  className={`flex-1 ${
+                    active === 5 ? "font-semibold text-lg" : " font-normal"
+                  }`}
+                >
+                  Requests
+                </span>
               </a>
             </li>
             <li className="w-[252px]">
@@ -208,14 +219,18 @@ const Sidebar = ({ active }) => {
                 }`}
               >
                 {active === 6 ? (
-                 <img src={message}></img>
+                  <img src={message}></img>
                 ) : (
                   <img src={messagewhite}></img>
                 )}
 
-                <span className={`flex-1 ${
-                  active === 6 ? "font-semibold text-lg" : " font-normal"
-                }`}>Messages</span>
+                <span
+                  className={`flex-1 ${
+                    active === 6 ? "font-semibold text-lg" : " font-normal"
+                  }`}
+                >
+                  Messages
+                </span>
               </a>
             </li>
             <li className="w-[252px]">
@@ -225,20 +240,24 @@ const Sidebar = ({ active }) => {
                   active === 7 ? "bg-primary text-white" : "text-secondary"
                 }`}
               >
-{active === 7 ? (
-                 <img src={setting}></img>
+                {active === 7 ? (
+                  <img src={setting}></img>
                 ) : (
                   <img src={settingwhite}></img>
                 )}
 
-                <span className={`flex-1 ${
-                  active === 7 ? "font-semibold text-lg" : " font-normal"
-                }`}>Settings</span>
+                <span
+                  className={`flex-1 ${
+                    active === 7 ? "font-semibold text-lg" : " font-normal"
+                  }`}
+                >
+                  Settings
+                </span>
               </a>
             </li>
             <li className="w-[252px]">
               <a
-                href="/signout"
+                href="/"
                 className={`flex items-center py-4 px-6 gap-1 rounded-2xl group ${
                   active === 8 ? "bg-primary text-white" : "text-secondary"
                 }`}

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "../../assets/Image.svg";
 import Calender from "../../assets/Calender.svg";
 import { FaChevronDown } from "react-icons/fa";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 const Settings = () => {
+  const [dropDown, setDropDown] = useState(false);
   return (
     <>
       <Sidebar active={7} />
@@ -104,11 +105,23 @@ const Settings = () => {
                 <label htmlFor="title" className="self-start font-medium">
                   Target Audience
                 </label>
-                <div className="flex h-[46px] w-[290px] justify-between px-5 items-center bg-[#F9FAFB] rounded-[10px]">
+                <div className="flex h-[46px] w-[290px] justify-between px-5 items-center bg-[#F9FAFB] rounded-[10px] relative">
                   <h1 className="font-normal text-[13px] text-[#393939] opacity-50">
                     Organizers
                   </h1>
-                  <FaChevronDown className="opacity-50" />
+                  <FaChevronDown
+                    className={`transition opacity-50 cursor-pointer ${
+                      dropDown ? "rotate-180" : "rotate-0"
+                    }`}
+                    onClick={() => setDropDown(!dropDown)}
+                  />
+                  {dropDown && (
+                    <div className="absolute top-10 left-0 bg-white rounded-md border w-full">
+                      <div className="p-2">Organizers</div>
+                      <div className="p-2">Organizers</div>
+                      <div className="p-2">Organizers</div>
+                    </div>
+                  )}
                 </div>
               </div>
               <button className="bg-[#2D8E00] text-white w-[300px] md-1100:w-[390px] h-[60px] rounded-[50px] text-xl font-semibold shadow-sm mt-7">

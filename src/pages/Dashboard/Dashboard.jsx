@@ -17,7 +17,7 @@ const Dashboard = () => {
       <Navbar text={text} />
       <div className="bg-[#FAFBFC] min-h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
-          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-6 lg-1500:px-14 lg-1780:px-16">
+          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-6 lg-1500:px-14 lg-1780:px-16 shadow-sm">
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
@@ -46,7 +46,7 @@ const Dashboard = () => {
               />
             </div>
           </div>
-          <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-2 lg:px-16">
+          <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-2 lg:px-16 shadow-sm">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <span className="w-full text-xl font-semibold text-[#05004E]">
                 Weekly Overview
