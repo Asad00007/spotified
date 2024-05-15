@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../../assets/logo.svg";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
@@ -9,7 +10,10 @@ const SignIn = () => {
         <img src={Logo} alt="" className="h-24" />
       </div>
       <div className="flex items-center justify-center mt-16 md-1200:mt-0 md-1200:h-screen w-full md-1200:w-[52%]">
-        <form className="flex flex-col justify-center min-w-[390px] md-1200:min-w-[600px]" action="">
+        <form
+          className="flex flex-col justify-center min-w-[390px] md-1200:min-w-[600px]"
+          action=""
+        >
           <label className=" font-semibold text-xl " htmlFor="">
             Email
           </label>
@@ -64,9 +68,13 @@ const SignIn = () => {
             </a>
           </div>
           <div className="mt-8 flex justify-center items-center">
-            <button className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]">Sign In</button>
+            <Link to="/dashboard">
+              {" "}
+              <button className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]">
+                Sign In
+              </button>
+            </Link>
           </div>
-          
         </form>
       </div>
     </div>
