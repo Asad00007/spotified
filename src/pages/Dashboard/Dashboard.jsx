@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
-import sportsImg from "../../assets/sports.png";
+import sportsImg from "../../assets/sports.svg";
 import totalGames from "../../assets/totalGames.svg";
 import organizer from "../../assets/organizer.svg";
 import user from "../../assets/users.svg";
@@ -21,7 +21,8 @@ const Dashboard = () => {
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
-            <div className="flex flex-col items-center md:flex-row gap-2 lg-1780:gap-4 mt-0 md:mt-20">
+            <div className=" relative flex flex-col items-center md:flex-row gap-2 lg-1780:gap-4 mt-0 md:mt-20">
+            <img src={sportsImg} alt="" className="absolute left-[31px] top-[30px] w-[19px] h-[19px] "/>
               <img
                 className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
                 src={totalGames}
