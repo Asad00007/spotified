@@ -15,7 +15,7 @@ const Dashboard = () => {
     <div>
       <Sidebar active={1} />
       <Navbar text={text} />
-      <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
+      <div className="bg-[#FAFBFC] min-h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
           <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-6 lg-1500:px-14 lg-1780:px-16">
             <span className="w-full text-xl font-semibold text-[#05004E]">
@@ -119,7 +119,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Cards */}
-        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-10 lg-1350:gap-x-12 lg-1500:gap-x-14 gap-y-14 ml-6 justify-center">
+        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-10 lg-1350:gap-x-12 lg-1500:gap-x-14 gap-y-14 ml-6 justify-center mb-5">
           <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
