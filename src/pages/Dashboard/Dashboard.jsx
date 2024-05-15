@@ -17,23 +17,23 @@ const Dashboard = () => {
       <Navbar text={text} />
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
-          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-2 lg-1350:px-2 lg-1500:px-12 lg-1780:px-16">
+          <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-6 lg-1500:px-14 lg-1780:px-16">
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
-            <div className="flex flex-col items-center md:flex-row gap-2 mt-0 md:mt-20">
+            <div className="flex flex-col items-center md:flex-row gap-2 lg-1780:gap-4 mt-0 md:mt-20">
               <img
-                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1190:w-[120px] md-1190:h-[120px] lg-1350:h-[145px] lg-1350:w-[145px] lg-1500:h-[160px] lg-1500:w-[160px] lg-1780:h-auto lg-1780:w-auto"
+                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
                 src={totalGames}
                 alt=""
               />
               <img
-                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1190:w-[120px] md-1190:h-[120px] lg-1350:h-[145px] lg-1350:w-[145px] lg-1500:h-[160px] lg-1500:w-[160px] lg-1780:h-auto lg-1780:w-auto"
+                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
                 src={organizer}
                 alt=""
               />
               <img
-                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1190:w-[120px] md-1190:h-[120px] lg-1350:h-[145px] lg-1350:w-[145px] lg-1500:h-[160px] lg-1500:w-[160px] lg-1780:h-auto lg-1780:w-auto"
+                className=" w-[265px] h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:w-[135px] lg-1500:h-[150px] lg-1500:w-[150px] lg-1780:h-auto lg-1780:w-auto"
                 src={user}
                 alt=""
               />
@@ -95,32 +95,32 @@ const Dashboard = () => {
         </div>
         <div className="flex flex-wrap p-8 gap-8 items-center">
           <div>
-            <span className=" text-[22px] font-semibold">Latest Games</span>
+            <span className="text-[18px] md:text-[22px] font-semibold">Latest Games</span>
           </div>
           <div className="flex flex-wrap gap-4">
-            <div className="bg-primary text-white w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="bg-primary text-[13px] text-white w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Cricket
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Football
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Badminton
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Golf
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Tennis
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
+            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
               Basketball
             </div>
           </div>
         </div>
         {/* Cards */}
-        <div className="flex flex-wrap gap-14 ml-6 justify-center">
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] max-w-[460px]">
+        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-10 lg-1350:gap-x-12 lg-1500:gap-x-14 gap-y-14 ml-6 justify-center">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
@@ -194,7 +194,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] max-w-[460px]">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
@@ -268,7 +268,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] max-w-[460px]">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
@@ -342,7 +342,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] max-w-[460px]">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
@@ -416,7 +416,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] max-w-[460px]">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
@@ -490,7 +490,7 @@ const Dashboard = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] max-w-[460px]">
+          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
               <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament

@@ -40,14 +40,14 @@ const Sidebar = ({ active }) => {
     };
   }, []);
   return (
-    <div ref={sidebarRef}>
+    <div className="relative" ref={sidebarRef}>
       <button
         datadrawertarget="default-sidebar"
         datadrawertoggle="default-sidebar"
         aria-controls="default-sidebar"
         type="button"
         onClick={toggleSidebar}
-        className="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+        className=" absolute inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
       >
         <span className="sr-only">Open sidebar</span>
         <svg
