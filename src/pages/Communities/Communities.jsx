@@ -311,6 +311,12 @@ const Communities = () => {
           <>
             <div className="flex flex-col flex-1 relative ">
               <div className="flex gap-3 items-center px-4 min-h-[80px] bg-[#2D8E00] bg-opacity-50">
+                <div
+                  className=" text-black rounded-full w-fit"
+                  onClick={handleClick}
+                >
+                  <FaArrowLeft />
+                </div>
                 <div className="w-[38px] h-[38px] relative">
                   <img src={footballcommunity} alt="" />
                 </div>
@@ -320,13 +326,7 @@ const Communities = () => {
                   </h1>
                 </div>
               </div>
-              <div className="flex flex-col overflow-auto  p-5 gap-5 h-[700px]">
-                <div
-                  className="bg-gray-200 text-black rounded-full w-fit p-2"
-                  onClick={handleClick}
-                >
-                  <FaArrowLeft />
-                </div>
+              <div className="flex flex-col overflow-auto  p-5 gap-5 h-[calc(100vh-150px)]">
                 <div className="flex gap-3">
                   <img src={ProfileRounded} alt="" className="self-start" />
                   <div className="flex flex-col">

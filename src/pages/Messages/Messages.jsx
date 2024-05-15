@@ -383,6 +383,12 @@ const Messages = () => {
           <>
             <div className="flex flex-col flex-1 relative ">
               <div className="flex gap-3 items-center px-4 min-h-[80px] bg-[#2D8E00] bg-opacity-50">
+                <div
+                  className=" text-black rounded-full w-fit"
+                  onClick={handleClick}
+                >
+                  <FaArrowLeft />
+                </div>
                 <div className="w-[38px] h-[38px] relative">
                   <img src={MessageProfile} alt="" />
                   <div className="absolute w-[12px] h-[12px] bg-[#53E04E] border-2 border-black rounded-full bottom-0 right-0"></div>
@@ -392,13 +398,7 @@ const Messages = () => {
                   <p className="text-[12px] font-[400] text-white">Active</p>
                 </div>
               </div>
-              <div className="flex flex-col overflow-auto  p-5 gap-5 h-[720px] pb-8">
-                <div
-                  className="bg-gray-200 text-black rounded-full w-fit p-2"
-                  onClick={handleClick}
-                >
-                  <FaArrowLeft />
-                </div>
+              <div className="flex flex-col overflow-auto  p-5 gap-5 h-[calc(100vh-150px)] pb-8">
                 <div className="flex gap-3">
                   <img src={ProfileRounded} alt="" className="self-start" />
                   <div className="flex flex-col">
