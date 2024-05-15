@@ -258,6 +258,9 @@ const Sidebar = ({ active }) => {
             <li className="w-[252px]">
               <a
                 href="/"
+                onClick={() => {
+                  sessionStorage.removeItem("access_token");
+                }}
                 className={`flex items-center py-4 px-6 gap-1 rounded-2xl group ${
                   active === 8 ? "bg-primary text-white" : "text-secondary"
                 }`}

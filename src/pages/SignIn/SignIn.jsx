@@ -1,13 +1,14 @@
 import React from "react";
 import Logo from "../../assets/logo.svg";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   const handleLogin = async (event) => {
     event.preventDefault();
 
@@ -26,8 +27,11 @@ const SignIn = () => {
         }
       );
 
-      console.log("Login successful:", response.data);
-      sessionStorage.setItem('access_token', response.data.data.access_token);
+      if (response.status === 200) {
+        navigate("/dashboard");
+        console.log("Login successful:", response.data);
+      }
+      sessionStorage.setItem("access_token", response.data.data.access_token);
     } catch (error) {
       console.error("Error logging in:", error);
     }

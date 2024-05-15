@@ -21,7 +21,7 @@ const Dashboard = () => {
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
             </span>
-            <div className="flex flex-col items-center md:flex-row gap-2 lg-1780:gap-4 mt-0 md:mt-20">
+            <div className="flex flex-col items-center md:flex-row gap-2 md:gap-6  mt-0 md:mt-20">
               <div className="relative min-w-fit">
                 <img
                   src={sportsImg}
