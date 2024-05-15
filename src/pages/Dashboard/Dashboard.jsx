@@ -16,7 +16,7 @@ const Dashboard = () => {
       <Sidebar active={1} />
       <Navbar text={text} />
       <div className="bg-[#FAFBFC] min-h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch p-8 gap-4">
+        <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch pl-4 p-8 gap-4">
           <div className="w-full md:w-1/2 max-w-[765px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-6 md:px-6 lg-1500:px-14 lg-1780:px-16 shadow-sm">
             <span className="w-full text-xl font-semibold text-[#05004E]">
               Complete Overview
@@ -100,7 +100,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap p-8 gap-8 items-center">
+        <div className="flex flex-wrap pt-0 pl-4 p-8 gap-8 items-center">
           <div>
             <span className="text-[18px] md:text-[22px] font-semibold">
               Latest Games
@@ -128,27 +128,27 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Cards */}
-        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-10 lg-1350:gap-x-12 lg-1500:gap-x-14 gap-y-14 ml-6 justify-center mb-5">
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
+        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-6 lg-1350:gap-x-6 lg-1500:gap-x-8 gap-y-14 justify-center mb-5">
+          <div className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
-              <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex relative">
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%]"
+                    className="w-[32px] h-[32px] rounded-[50%]"
                     src={firstImg}
                     alt=""
                   />
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%] absolute left-6"
+                    className="w-[32px] h-[32px] rounded-[50%] absolute left-6"
                     src={secondImg}
                     alt=""
                   />
                   <svg
-                    width="41"
-                    height="40"
+                    width="32"
+                    height="32"
                     viewBox="0 0 41 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -162,22 +162,24 @@ const Dashboard = () => {
                       stroke="#E5E5E5"
                     />
                   </svg>
-                  <p className="absolute z-50 ml-16 mt-2 text-black text-[15px]">
+                  <p className="absolute z-50 ml-[50px] mt-1 text-black text-[15px]">
                     4
                   </p>
                 </div>
-                <div className="text-secondary text-base">
+                <div className="text-secondary text-[14px] ">
                   Players 6/<span className=" text-secondaryFifty">10</span>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <div className="text-secondary text-base">
+            <div className="px-6 pb-4">
+              <div className="text-secondary text-[14px]">
                 Mon 11 Jun, 5:45 PM
               </div>
-              <div className=" font-semibold text-xl mb-2">Golf Tournament</div>
+              <div className=" font-semibold text-[18px] mb-2">
+                Golf Tournament
+              </div>
 
-              <div className="flex gap-2 text-secondaryFifty text-[13px] font-medium">
+              <div className="flex gap-2 text-secondaryFifty text-[11px] font-medium">
                 <svg
                   width="13"
                   height="16"
@@ -194,35 +196,35 @@ const Dashboard = () => {
                 Golf Sports Academy, Dubai, UAE-05.56 km
               </div>
               <div className="flex justify-between mt-4 border-t border-[#E5E5E5]">
-                <div className=" text-secondary text-base mt-2 font-medium">
+                <div className=" text-secondary text-[14px] mt-2 font-medium">
                   Entry Fee
                 </div>
-                <div className="text-primary font-medium text-base mt-2">
+                <div className="text-primary font-medium text-[14px] mt-2">
                   AED 50
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
+          <div className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
-              <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex relative">
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%]"
+                    className="w-[32px] h-[32px] rounded-[50%]"
                     src={firstImg}
                     alt=""
                   />
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%] absolute left-6"
+                    className="w-[32px] h-[32px] rounded-[50%] absolute left-6"
                     src={secondImg}
                     alt=""
                   />
                   <svg
-                    width="41"
-                    height="40"
+                    width="32"
+                    height="32"
                     viewBox="0 0 41 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -236,22 +238,24 @@ const Dashboard = () => {
                       stroke="#E5E5E5"
                     />
                   </svg>
-                  <p className="absolute z-50 ml-16 mt-2 text-black text-[15px]">
+                  <p className="absolute z-50 ml-[50px] mt-1 text-black text-[15px]">
                     4
                   </p>
                 </div>
-                <div className="text-secondary text-base">
+                <div className="text-secondary text-[14px] ">
                   Players 6/<span className=" text-secondaryFifty">10</span>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <div className="text-secondary text-base">
+            <div className="px-6 pb-4">
+              <div className="text-secondary text-[14px]">
                 Mon 11 Jun, 5:45 PM
               </div>
-              <div className=" font-semibold text-xl mb-2">Golf Tournament</div>
+              <div className=" font-semibold text-[18px] mb-2">
+                Golf Tournament
+              </div>
 
-              <div className="flex gap-2 text-secondaryFifty text-[13px] font-medium">
+              <div className="flex gap-2 text-secondaryFifty text-[11px] font-medium">
                 <svg
                   width="13"
                   height="16"
@@ -268,35 +272,35 @@ const Dashboard = () => {
                 Golf Sports Academy, Dubai, UAE-05.56 km
               </div>
               <div className="flex justify-between mt-4 border-t border-[#E5E5E5]">
-                <div className=" text-secondary text-base mt-2 font-medium">
+                <div className=" text-secondary text-[14px] mt-2 font-medium">
                   Entry Fee
                 </div>
-                <div className="text-primary font-medium text-base mt-2">
+                <div className="text-primary font-medium text-[14px] mt-2">
                   AED 50
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
+          <div className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
-              <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex relative">
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%]"
+                    className="w-[32px] h-[32px] rounded-[50%]"
                     src={firstImg}
                     alt=""
                   />
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%] absolute left-6"
+                    className="w-[32px] h-[32px] rounded-[50%] absolute left-6"
                     src={secondImg}
                     alt=""
                   />
                   <svg
-                    width="41"
-                    height="40"
+                    width="32"
+                    height="32"
                     viewBox="0 0 41 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -310,22 +314,24 @@ const Dashboard = () => {
                       stroke="#E5E5E5"
                     />
                   </svg>
-                  <p className="absolute z-50 ml-16 mt-2 text-black text-[15px]">
+                  <p className="absolute z-50 ml-[50px] mt-1 text-black text-[15px]">
                     4
                   </p>
                 </div>
-                <div className="text-secondary text-base">
+                <div className="text-secondary text-[14px] ">
                   Players 6/<span className=" text-secondaryFifty">10</span>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <div className="text-secondary text-base">
+            <div className="px-6 pb-4">
+              <div className="text-secondary text-[14px]">
                 Mon 11 Jun, 5:45 PM
               </div>
-              <div className=" font-semibold text-xl mb-2">Golf Tournament</div>
+              <div className=" font-semibold text-[18px] mb-2">
+                Golf Tournament
+              </div>
 
-              <div className="flex gap-2 text-secondaryFifty text-[13px] font-medium">
+              <div className="flex gap-2 text-secondaryFifty text-[11px] font-medium">
                 <svg
                   width="13"
                   height="16"
@@ -342,35 +348,35 @@ const Dashboard = () => {
                 Golf Sports Academy, Dubai, UAE-05.56 km
               </div>
               <div className="flex justify-between mt-4 border-t border-[#E5E5E5]">
-                <div className=" text-secondary text-base mt-2 font-medium">
+                <div className=" text-secondary text-[14px] mt-2 font-medium">
                   Entry Fee
                 </div>
-                <div className="text-primary font-medium text-base mt-2">
+                <div className="text-primary font-medium text-[14px] mt-2">
                   AED 50
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
+          <div className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
-              <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex relative">
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%]"
+                    className="w-[32px] h-[32px] rounded-[50%]"
                     src={firstImg}
                     alt=""
                   />
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%] absolute left-6"
+                    className="w-[32px] h-[32px] rounded-[50%] absolute left-6"
                     src={secondImg}
                     alt=""
                   />
                   <svg
-                    width="41"
-                    height="40"
+                    width="32"
+                    height="32"
                     viewBox="0 0 41 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -384,22 +390,24 @@ const Dashboard = () => {
                       stroke="#E5E5E5"
                     />
                   </svg>
-                  <p className="absolute z-50 ml-16 mt-2 text-black text-[15px]">
+                  <p className="absolute z-50 ml-[50px] mt-1 text-black text-[15px]">
                     4
                   </p>
                 </div>
-                <div className="text-secondary text-base">
+                <div className="text-secondary text-[14px] ">
                   Players 6/<span className=" text-secondaryFifty">10</span>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <div className="text-secondary text-base">
+            <div className="px-6 pb-4">
+              <div className="text-secondary text-[14px]">
                 Mon 11 Jun, 5:45 PM
               </div>
-              <div className=" font-semibold text-xl mb-2">Golf Tournament</div>
+              <div className=" font-semibold text-[18px] mb-2">
+                Golf Tournament
+              </div>
 
-              <div className="flex gap-2 text-secondaryFifty text-[13px] font-medium">
+              <div className="flex gap-2 text-secondaryFifty text-[11px] font-medium">
                 <svg
                   width="13"
                   height="16"
@@ -416,35 +424,35 @@ const Dashboard = () => {
                 Golf Sports Academy, Dubai, UAE-05.56 km
               </div>
               <div className="flex justify-between mt-4 border-t border-[#E5E5E5]">
-                <div className=" text-secondary text-base mt-2 font-medium">
+                <div className=" text-secondary text-[14px] mt-2 font-medium">
                   Entry Fee
                 </div>
-                <div className="text-primary font-medium text-base mt-2">
+                <div className="text-primary font-medium text-[14px] mt-2">
                   AED 50
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
+          <div className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
-              <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex relative">
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%]"
+                    className="w-[32px] h-[32px] rounded-[50%]"
                     src={firstImg}
                     alt=""
                   />
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%] absolute left-6"
+                    className="w-[32px] h-[32px] rounded-[50%] absolute left-6"
                     src={secondImg}
                     alt=""
                   />
                   <svg
-                    width="41"
-                    height="40"
+                    width="32"
+                    height="32"
                     viewBox="0 0 41 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -458,22 +466,24 @@ const Dashboard = () => {
                       stroke="#E5E5E5"
                     />
                   </svg>
-                  <p className="absolute z-50 ml-16 mt-2 text-black text-[15px]">
+                  <p className="absolute z-50 ml-[50px] mt-1 text-black text-[15px]">
                     4
                   </p>
                 </div>
-                <div className="text-secondary text-base">
+                <div className="text-secondary text-[14px] ">
                   Players 6/<span className=" text-secondaryFifty">10</span>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <div className="text-secondary text-base">
+            <div className="px-6 pb-4">
+              <div className="text-secondary text-[14px]">
                 Mon 11 Jun, 5:45 PM
               </div>
-              <div className=" font-semibold text-xl mb-2">Golf Tournament</div>
+              <div className=" font-semibold text-[18px] mb-2">
+                Golf Tournament
+              </div>
 
-              <div className="flex gap-2 text-secondaryFifty text-[13px] font-medium">
+              <div className="flex gap-2 text-secondaryFifty text-[11px] font-medium">
                 <svg
                   width="13"
                   height="16"
@@ -490,35 +500,35 @@ const Dashboard = () => {
                 Golf Sports Academy, Dubai, UAE-05.56 km
               </div>
               <div className="flex justify-between mt-4 border-t border-[#E5E5E5]">
-                <div className=" text-secondary text-base mt-2 font-medium">
+                <div className=" text-secondary text-[14px] mt-2 font-medium">
                   Entry Fee
                 </div>
-                <div className="text-primary font-medium text-base mt-2">
+                <div className="text-primary font-medium text-[14px] mt-2">
                   AED 50
                 </div>
               </div>
             </div>
           </div>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden w-[30%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
+          <div className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]">
             <div className="px-6 py-4">
-              <div className=" font-medium text-sm mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
                 Tournament
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex relative">
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%]"
+                    className="w-[32px] h-[32px] rounded-[50%]"
                     src={firstImg}
                     alt=""
                   />
                   <img
-                    className="w-[40px] h-[40px] rounded-[50%] absolute left-6"
+                    className="w-[32px] h-[32px] rounded-[50%] absolute left-6"
                     src={secondImg}
                     alt=""
                   />
                   <svg
-                    width="41"
-                    height="40"
+                    width="32"
+                    height="32"
                     viewBox="0 0 41 40"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -532,22 +542,24 @@ const Dashboard = () => {
                       stroke="#E5E5E5"
                     />
                   </svg>
-                  <p className="absolute z-50 ml-16 mt-2 text-black text-[15px]">
+                  <p className="absolute z-50 ml-[50px] mt-1 text-black text-[15px]">
                     4
                   </p>
                 </div>
-                <div className="text-secondary text-base">
+                <div className="text-secondary text-[14px] ">
                   Players 6/<span className=" text-secondaryFifty">10</span>
                 </div>
               </div>
             </div>
-            <div className="px-6 py-4">
-              <div className="text-secondary text-base">
+            <div className="px-6 pb-4">
+              <div className="text-secondary text-[14px]">
                 Mon 11 Jun, 5:45 PM
               </div>
-              <div className=" font-semibold text-xl mb-2">Golf Tournament</div>
+              <div className=" font-semibold text-[18px] mb-2">
+                Golf Tournament
+              </div>
 
-              <div className="flex gap-2 text-secondaryFifty text-[13px] font-medium">
+              <div className="flex gap-2 text-secondaryFifty text-[11px] font-medium">
                 <svg
                   width="13"
                   height="16"
@@ -564,10 +576,10 @@ const Dashboard = () => {
                 Golf Sports Academy, Dubai, UAE-05.56 km
               </div>
               <div className="flex justify-between mt-4 border-t border-[#E5E5E5]">
-                <div className=" text-secondary text-base mt-2 font-medium">
+                <div className=" text-secondary text-[14px] mt-2 font-medium">
                   Entry Fee
                 </div>
-                <div className="text-primary font-medium text-base mt-2">
+                <div className="text-primary font-medium text-[14px] mt-2">
                   AED 50
                 </div>
               </div>
