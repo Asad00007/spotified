@@ -8,6 +8,8 @@ import { useState } from "react";
 import Sidebar from "../../components/Sidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
 import { useEffect } from "react";
+import axios from "axios";
+
 const Profile = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -24,19 +26,18 @@ const Profile = () => {
   const fetchProfile = async () => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await fetch("https://gosportified.com/auth/get_profile/", {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setName(data.data.full_name);
-        setEmail(data.data.email);
-        setPhone(data.data.phoneNo);
-      } else {
-        console.error("Error fetching profile:", data.msg);
-      }
+      const response = await axios.get(
+        "https://gosportified.com/auth/get_profile/",
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+      const data = response.data;
+      setName(data.data.full_name);
+      setEmail(data.data.email);
+      setPhone(data.data.phoneNo);
     } catch (error) {
       console.error("Error fetching profile:", error);
     }
@@ -45,21 +46,19 @@ const Profile = () => {
   const updateProfile = async (updatedData) => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await fetch("https://gosportified.com/auth/update_profile/", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-        body: updatedData,
-      });
-      const data = await response.json();
-      if (response.ok) {
-        console.log("Profile updated successfully:", data.msg);
-        // Fetch the profile again to update the UI with the new data
-        fetchProfile();
-      } else {
-        console.error("Error updating profile:", data.msg);
-      }
+      const response = await axios.post(
+        "https://gosportified.com/auth/update_profile/",
+        updatedData,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      console.log("Profile updated successfully:", response.data.msg);
+      // Fetch the profile again to update the UI with the new data
+      fetchProfile();
     } catch (error) {
       console.error("Error updating profile:", error);
     }
@@ -70,7 +69,7 @@ const Profile = () => {
       const formData = new FormData();
       formData.append("full_name", temp);
       updateProfile(formData);
-      setName(temp)
+      setName(temp);
       setTemp("");
       setCurrent(0);
     }
