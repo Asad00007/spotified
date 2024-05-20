@@ -3,10 +3,13 @@ import Logo from "../../assets/logo.svg";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../auth/AuthContext";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { login } = useAuth();
 
   const navigate = useNavigate();
   const handleLogin = async (event) => {
@@ -18,7 +21,7 @@ const SignIn = () => {
 
     try {
       const response = await axios.post(
-        "http://gosportified.sumizan.com/auth/login/",
+        "https://gosportified.com/admin_side/login/",
         formData,
         {
           headers: {
@@ -26,12 +29,12 @@ const SignIn = () => {
           },
         }
       );
-
+      sessionStorage.setItem("access_token", response.data.data.access_token);
       if (response.status === 200) {
+        login();
         navigate("/dashboard");
         console.log("Login successful:", response.data);
       }
-      sessionStorage.setItem("access_token", response.data.data.access_token);
     } catch (error) {
       console.error("Error logging in:", error);
     }
