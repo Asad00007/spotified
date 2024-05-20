@@ -9,6 +9,7 @@ import Sidebar from "../../components/Sidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
 import { useEffect } from "react";
 import axios from "axios";
+import { baseAxios } from "../../utils/apiConfig.jsx";
 
 const Profile = () => {
   const [name, setName] = useState("");
@@ -26,8 +27,8 @@ const Profile = () => {
   const fetchProfile = async () => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await axios.get(
-        "https://gosportified.com/auth/get_profile/",
+      const response = await baseAxios.get(
+        "/auth/get_profile/",
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -35,6 +36,7 @@ const Profile = () => {
         }
       );
       const data = response.data;
+
       setName(data.data.full_name);
       setEmail(data.data.email);
       setPhone(data.data.phoneNo);
@@ -43,12 +45,12 @@ const Profile = () => {
     }
   };
 
-  const updateProfile = async (updatedData) => {
+  const updateProfile = async (formData) => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await axios.post(
-        "https://gosportified.com/auth/update_profile/",
-        updatedData,
+      const response = await baseAxios.post(
+        "/auth/update_profile/",
+        formData,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -57,7 +59,6 @@ const Profile = () => {
         }
       );
       console.log("Profile updated successfully:", response.data.msg);
-      // Fetch the profile again to update the UI with the new data
       fetchProfile();
     } catch (error) {
       console.error("Error updating profile:", error);

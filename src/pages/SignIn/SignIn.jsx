@@ -2,7 +2,7 @@ import React from "react";
 import Logo from "../../assets/logo.svg";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import { baseAxios } from "../../utils/apiConfig";
 import { useAuth } from "../../auth/AuthContext";
 
 const SignIn = () => {
@@ -20,8 +20,8 @@ const SignIn = () => {
     formData.append("password", password);
 
     try {
-      const response = await axios.post(
-        "https://gosportified.com/admin_side/login/",
+      const response = await baseAxios.post(
+        "/admin_side/login/",
         formData,
         {
           headers: {
@@ -33,7 +33,6 @@ const SignIn = () => {
       if (response.status === 200) {
         login();
         navigate("/dashboard");
-        console.log("Login successful:", response.data);
       }
     } catch (error) {
       console.error("Error logging in:", error);
