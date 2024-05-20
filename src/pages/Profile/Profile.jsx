@@ -7,9 +7,10 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import Sidebar from "../../components/Sidebar.jsx";
 import Navbar from "../../components/Navbar.jsx";
+import { useEffect } from "react";
 const Profile = () => {
-  const [name, setName] = useState("Abdul Hadi");
-  const [email, setEmail] = useState("emailaddress@gmail.com");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [pass, setPass] = useState("xxx xxxxxxx");
   const [showPass, setShowPass] = useState(true);
   const [phone, setPhone] = useState("+971 xxx xxxxx21");
@@ -17,13 +18,64 @@ const Profile = () => {
   const [current, setCurrent] = useState(0);
   const [verify, setVerify] = useState("+971 xxx xxxxx21");
 
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+  const fetchProfile = async () => {
+    const accessToken = sessionStorage.getItem("access_token");
+    try {
+      const response = await fetch("https://gosportified.com/auth/get_profile/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setName(data.data.full_name);
+        setEmail(data.data.email);
+        setPhone(data.data.phoneNo);
+      } else {
+        console.error("Error fetching profile:", data.msg);
+      }
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+
+  const updateProfile = async (updatedData) => {
+    const accessToken = sessionStorage.getItem("access_token");
+    try {
+      const response = await fetch("https://gosportified.com/auth/update_profile/", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: updatedData,
+      });
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Profile updated successfully:", data.msg);
+        // Fetch the profile again to update the UI with the new data
+        fetchProfile();
+      } else {
+        console.error("Error updating profile:", data.msg);
+      }
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
+  };
+
   const onNameSave = () => {
     if (temp !== "") {
-      setName(temp);
+      const formData = new FormData();
+      formData.append("full_name", temp);
+      updateProfile(formData);
+      setName(temp)
       setTemp("");
       setCurrent(0);
     }
   };
+
   const onEmailSave = () => {
     if (temp !== "") {
       setEmail(temp);
@@ -40,6 +92,9 @@ const Profile = () => {
   };
   const onPhoneSave = () => {
     if (temp !== "") {
+      const formData = new FormData();
+      formData.append("phone", temp);
+      updateProfile(formData);
       setPhone(temp);
       setTemp("");
       setCurrent(0);
@@ -47,6 +102,9 @@ const Profile = () => {
   };
   const onPassSave = () => {
     if (temp !== "") {
+      const formData = new FormData();
+      formData.append("password", temp);
+      updateProfile(formData);
       setPass(temp);
       setTemp("");
       setCurrent(0);
@@ -93,7 +151,7 @@ const Profile = () => {
                     <input
                       type="text"
                       className="border p-2 w-[80%]"
-                      value={temp}
+                      value={temp || name}
                       onChange={(e) => setTemp(e.target.value)}
                     />
                     <div className="flex gap-5">
@@ -190,7 +248,7 @@ const Profile = () => {
                         type="text"
                         maxLength={15}
                         className="border p-2 w-[80%]"
-                        value={temp}
+                        value={temp || phone}
                         onChange={(e) => setTemp(e.target.value)}
                       />
                       <div className="flex gap-5">
