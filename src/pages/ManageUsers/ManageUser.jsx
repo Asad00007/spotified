@@ -1,13 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
 import filterIcon from "../../assets/filterIcon.svg";
 import lineFilter from "../../assets/lineFilter.svg";
 import downArrow from "../../assets/downArrow.svg";
 import deleteIcon from "../../assets/deleteIcon.svg";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { baseAxios } from "../../utils/apiConfig";
 
 const ManageUser = () => {
   const text = "Manage User";
+
+  const [users, setUsers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const fetchUsers = async () => {
+    const accessToken = sessionStorage.getItem("access_token");
+    try {
+      const response = await baseAxios.get("/admin_side/get_users/?role=user", {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      const data = response.data;
+      setUsers(data.data);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
   return (
     <div>
       <Sidebar active={2} />
@@ -58,11 +79,7 @@ const ManageUser = () => {
               </div>
             </div>
             <div>
-              <img
-                className="h-[40px] md:h-[72px]"
-                src={lineFilter}
-                alt=""
-              />
+              <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
           </div>
           <div className=" flex">
@@ -101,517 +118,120 @@ const ManageUser = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1231
-                </th>
-                <td className="px-6 py-4">Savannah Nguyen</td>
-                <td className="px-6 py-4">maka@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4 flex gap-4 items-center">
-                  {" "}
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+              {users.map((user) => (
+                <tr className="bg-white border-b text-[#202224]" key={user.id}>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium whitespace-nowrap"
                   >
-                    <circle cx="5" cy="5" r="5" fill="#04EB0D" />
-                  </svg>
-                  Active
-                </td>
-                <td className="px-6 py-4">Cricket</td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
-              {/* offline */}
-              <tr className="bg-[#F9FAFB] border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1232
-                </th>
-                <td className="px-6 py-4">Albert Flores</td>
-                <td className="px-6 py-4">ustil@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4 flex gap-4 items-center">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#EA4335" />
-                  </svg>
-                  Offline
-                </td>
-                <td className="px-6 py-4">Badminton</td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1233
-                </th>
-                <td className="px-6 py-4">Brooklyn Simmons</td>
-                <td className="px-6 py-4">quasiah@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4 flex gap-4 items-center">
-                  {" "}
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#04EB0D" />
-                  </svg>
-                  Active
-                </td>
-                <td className="px-6 py-4">Basketball</td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
-              <tr className="bg-[#F9FAFB] border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1234
-                </th>
-                <td className="px-6 py-4">Kathryn Murphy</td>
-                <td className="px-6 py-4">osgoodwy@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4 flex gap-4 items-center">
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#EA4335" />
-                  </svg>
-                  Offline
-                </td>
-                <td className="px-6 py-4">Football</td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1235
-                </th>
-                <td className="px-6 py-4">Jerome Bell</td>
-                <td className="px-6 py-4">zitka@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4 flex gap-4 items-center">
-                  {" "}
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#04EB0D" />
-                  </svg>
-                  Active
-                </td>
-                <td className="px-6 py-4">Cricket</td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
-              <tr className="bg-[#F9FAFB] border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1236
-                </th>
-                <td className="px-6 py-4">Arlene McCoy</td>
-                <td className="px-6 py-4">igerrin@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4 flex gap-4 items-center">
-                  {" "}
-                  <svg
-                    width="10"
-                    height="10"
-                    viewBox="0 0 10 10"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <circle cx="5" cy="5" r="5" fill="#04EB0D" />
-                  </svg>
-                  Active
-                </td>
-                <td className="px-6 py-4">Tennis</td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
+                    <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />#
+                    {user.id}
+                  </th>
+                  <td className="px-6 py-4">{user.full_name}</td>
+                  <td className="px-6 py-4">{user.email}</td>
+                  <td className="px-6 py-4">{user.phoneNo}</td>
+                  <td className="px-6 py-4 flex gap-4 items-center">
+                    {" "}
+                    <svg
+                      width="10"
+                      height="10"
+                      viewBox="0 0 10 10"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <circle
+                        cx="5"
+                        cy="5"
+                        r="5"
+                        fill={user.approved ? "#04EB0D" : "#EA4335"}
+                      />
+                    </svg>
+                    {user.approved ? "Active" : "Offline"}
+                  </td>
+                  <td className="px-6 py-4">Cricket</td>
+                  <td className="px-6 py-4 flex gap-4">
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="29"
+                        height="29"
+                        rx="4.5"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M8 10.206H22"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="29"
+                        height="29"
+                        rx="4.5"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
+          <div className="flex justify-between items-center flex-1">
+            <span className="text-[#202224] text-[14px] font-normal">
+              Showing 1-09 of 78
+            </span>
+            <span className="text-[#202224] text-[14px] font-normal">
+              Page 1
+            </span>
+            <div className="flex p-2">
+              <div className={`bg-white px-2 py-1 border border-gray-200 `}>
+                <FaChevronLeft
+                  className={`${
+                    currentPage < 2 ? "text-gray-300" : "text-black"
+                  } text-xs `}
+                />
+              </div>
+              <div className="bg-white px-2 py-1 border border-gray-200">
+                <FaChevronRight className=" text-xs text-black" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

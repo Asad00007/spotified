@@ -1,13 +1,16 @@
 import React from "react";
+import { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
-import filterIcon from "../../assets/filterIcon.svg" 
-import lineFilter from "../../assets/lineFilter.svg"
-import downArrow from "../../assets/downArrow.svg"
+import filterIcon from "../../assets/filterIcon.svg";
+import lineFilter from "../../assets/lineFilter.svg";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import downArrow from "../../assets/downArrow.svg";
 
-import deleteIcon from "../../assets/deleteIcon.svg"
+import deleteIcon from "../../assets/deleteIcon.svg";
 const OrganizerRequest = () => {
   const text = "Organizer Request";
+  const [currentPage, setCurrentPage] = useState(1);
   return (
     <div>
       <Sidebar active={5} />
@@ -18,7 +21,11 @@ const OrganizerRequest = () => {
         <div className=" ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0  w-[90%] md:w-[95%] h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
             <div className="flex justify-center items-center px-2 md:px-12">
-              <img className="h-[20px] md:h-auto w-[20px] md:w-auto" src={filterIcon} alt="" />
+              <img
+                className="h-[20px] md:h-auto w-[20px] md:w-auto"
+                src={filterIcon}
+                alt=""
+              />
             </div>
             <div>
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
@@ -90,10 +97,16 @@ const OrganizerRequest = () => {
                 <td className="px-6 py-4">Savannah Nguyen</td>
                 <td className="px-6 py-4">maka@gmail.com</td>
                 <td className="px-6 py-4">(319) 555-0115</td>
-                <td className="px-6 py-4">6391 Elgin St. Celina, Delaware 10299</td>
+                <td className="px-6 py-4">
+                  6391 Elgin St. Celina, Delaware 10299
+                </td>
                 <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Confirm</div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Deny</div>
+                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Confirm
+                  </div>
+                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Deny
+                  </div>
                 </td>
               </tr>
               <tr className="bg-[#F9FAFB] border-b text-[#202224]">
@@ -107,10 +120,16 @@ const OrganizerRequest = () => {
                 <td className="px-6 py-4">Albert Flores</td>
                 <td className="px-6 py-4">ustil@gmail.com</td>
                 <td className="px-6 py-4">(219) 555-0114</td>
-                <td className="px-6 py-4">6391 Elgin St. Celina, Delaware 10299</td>
+                <td className="px-6 py-4">
+                  6391 Elgin St. Celina, Delaware 10299
+                </td>
                 <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Confirm</div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Deny</div>
+                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Confirm
+                  </div>
+                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Deny
+                  </div>
                 </td>
               </tr>
               <tr className="bg-white border-b text-[#202224]">
@@ -124,11 +143,17 @@ const OrganizerRequest = () => {
                 <td className="px-6 py-4">Brooklyn Simmons</td>
                 <td className="px-6 py-4">quasiah@gmail.com</td>
                 <td className="px-6 py-4">(302) 555-0107</td>
-                
-                <td className="px-6 py-4">6391 Elgin St. Celina, Delaware 10299</td>
+
+                <td className="px-6 py-4">
+                  6391 Elgin St. Celina, Delaware 10299
+                </td>
                 <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Confirm</div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Deny</div>
+                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Confirm
+                  </div>
+                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Deny
+                  </div>
                 </td>
               </tr>
               <tr className="bg-[#F9FAFB] border-b text-[#202224]">
@@ -142,11 +167,17 @@ const OrganizerRequest = () => {
                 <td className="px-6 py-4">Kathryn Murphy</td>
                 <td className="px-6 py-4">osgoodwy@gmail.com</td>
                 <td className="px-6 py-4">(205) 555-0100</td>
-               
-                <td className="px-6 py-4">6391 Elgin St. Celina, Delaware 10299</td>
+
+                <td className="px-6 py-4">
+                  6391 Elgin St. Celina, Delaware 10299
+                </td>
                 <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Confirm</div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Deny</div>
+                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Confirm
+                  </div>
+                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Deny
+                  </div>
                 </td>
               </tr>
               <tr className="bg-white border-b text-[#202224]">
@@ -160,10 +191,16 @@ const OrganizerRequest = () => {
                 <td className="px-6 py-4">Jerome Bell</td>
                 <td className="px-6 py-4">zitka@gmail.com</td>
                 <td className="px-6 py-4">(303) 555-0105</td>
-                <td className="px-6 py-4">6391 Elgin St. Celina, Delaware 10299</td>
+                <td className="px-6 py-4">
+                  6391 Elgin St. Celina, Delaware 10299
+                </td>
                 <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Confirm</div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Deny</div>
+                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Confirm
+                  </div>
+                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Deny
+                  </div>
                 </td>
               </tr>
               <tr className="bg-[#F9FAFB] border-b text-[#202224]">
@@ -177,14 +214,40 @@ const OrganizerRequest = () => {
                 <td className="px-6 py-4">Arlene McCoy</td>
                 <td className="px-6 py-4">igerrin@gmail.com</td>
                 <td className="px-6 py-4">(405) 555-0128</td>
-                <td className="px-6 py-4">6391 Elgin St. Celina, Delaware 10299</td>
+                <td className="px-6 py-4">
+                  6391 Elgin St. Celina, Delaware 10299
+                </td>
                 <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Confirm</div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">Deny</div>
+                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Confirm
+                  </div>
+                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
+                    Deny
+                  </div>
                 </td>
               </tr>
             </tbody>
           </table>
+          <div className="flex justify-between items-center flex-1">
+            <span className="text-[#202224] text-[14px] font-normal">
+              Showing 1-09 of 78
+            </span>
+            <span className="text-[#202224] text-[14px] font-normal">
+              Page 1
+            </span>
+            <div className="flex p-2">
+              <div className={`bg-white px-2 py-1 border border-gray-200 `}>
+                <FaChevronLeft
+                  className={`${
+                    currentPage < 2 ? "text-gray-300" : "text-black"
+                  } text-xs `}
+                />
+              </div>
+              <div className="bg-white px-2 py-1 border border-gray-200">
+                <FaChevronRight className=" text-xs text-black" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
