@@ -11,25 +11,44 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 const ManageOrganizer = () => {
   const text = "Manage organizer";
   const [organizers, setOrganizers] = useState([]);
-  const fetchOrganizers = async () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  const fetchOrganizers = async (offset = 0) => {
     const accesstoken = sessionStorage.getItem("access_token");
     try {
       const response = await baseAxios.get(
-        "/admin_side/get_users/?role=organiser",
+        `/admin_side/get_users/?role=organiser&limit=10&offset=${offset}`,
         {
           headers: { Authorization: `Bearer ${accesstoken}` },
         }
       );
       const data = response.data;
-      setOrganizers(data.data);
+      setOrganizers(data.results);
+      setTotalUsers(data.count);
     } catch (error) {
       console.log("Error Fetching Organizers", error);
     }
   };
   useEffect(() => {
-    fetchOrganizers();
+    fetchOrganizers(0);
   }, []);
-  const [currentPage, setCurrentPage] = useState(1);
+
+  const handleNextPage = () => {
+    const newPage = currentPage + 1;
+    const newOffset = (newPage - 1) * 10;
+    fetchOrganizers(newOffset);
+    setCurrentPage(newPage);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const newPage = currentPage - 1;
+      const newOffset = (newPage - 1) * 10;
+      fetchOrganizers(newOffset);
+      setCurrentPage(newPage);
+    }
+  };
   return (
     <div>
       <Sidebar active={3} />
@@ -105,100 +124,117 @@ const ManageOrganizer = () => {
               </tr>
             </thead>
             <tbody>
-              {/* {organizers.map((org) => ( */}
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" /># 1
-                </th>
-                <td className="px-6 py-4">go</td>
-                <td className="px-6 py-4">maka@gmail.com</td>
-                <td className="px-6 py-4">+92 xxx xxxxx21</td>
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+              {organizers.map((org) => (
+                <tr className="bg-white border-b text-[#202224]">
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium whitespace-nowrap"
+                    key={org.id}
                   >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M8 10.206H22"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                  <svg
-                    width="30"
-                    height="30"
-                    viewBox="0 0 30 30"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <rect
-                      x="0.5"
-                      y="0.5"
-                      width="29"
-                      height="29"
-                      rx="4.5"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                    />
-                    <path
-                      d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
-                      stroke="#393939"
-                      strokeOpacity="0.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </td>
-              </tr>
-              {/* ))} */}
+                    <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />#
+                    {org.id}
+                  </th>
+                  <td className="px-6 py-4">{org.full_name}</td>
+                  <td className="px-6 py-4">{org.email}</td>
+                  <td className="px-6 py-4">{org.phoneNo}</td>
+                  <td className="px-6 py-4">{org.address}</td>
+                  <td className="px-6 py-4 flex gap-4">
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="29"
+                        height="29"
+                        rx="4.5"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M8 10.206H22"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                    <svg
+                      width="30"
+                      height="30"
+                      viewBox="0 0 30 30"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <rect
+                        x="0.5"
+                        y="0.5"
+                        width="29"
+                        height="29"
+                        rx="4.5"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                      />
+                      <path
+                        d="M9.34315 9.34315C7.89543 10.7909 7 12.7909 7 15C7 19.4183 10.5817 23 15 23C17.2091 23 19.2091 22.1046 20.6569 20.6569M9.34315 9.34315C10.7909 7.89543 12.7909 7 15 7C19.4183 7 23 10.5817 23 15C23 17.2091 22.1046 19.2091 20.6569 20.6569M9.34315 9.34315L20.6569 20.6569"
+                        stroke="#393939"
+                        strokeOpacity="0.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           <div className="flex justify-between items-center flex-1">
             <span className="text-[#202224] text-[14px] font-normal">
-              Showing 1-09 of 78
+              Showing {currentPage * 10 - 9}-
+              {Math.min(currentPage * 10, totalUsers)} of {totalUsers}
             </span>
             <span className="text-[#202224] text-[14px] font-normal">
-              Page 1
+              Page {currentPage}
             </span>
             <div className="flex p-2">
-              <div className={`bg-white px-2 py-1 border border-gray-200 `}>
+              <div
+                className={`bg-white px-2 py-1 border border-gray-200 ${
+                  currentPage < 2 ? "cursor-not-allowed" : ""
+                }`}
+                onClick={handlePrevPage}
+              >
                 <FaChevronLeft
                   className={`${
                     currentPage < 2 ? "text-gray-300" : "text-black"
-                  } text-xs `}
+                  } text-xs`}
                 />
               </div>
-              <div className="bg-white px-2 py-1 border border-gray-200">
-                <FaChevronRight className=" text-xs text-black" />
+              <div
+                className={`bg-white px-2 py-1 border border-gray-200 ${
+                  currentPage * 10 >= totalUsers ? "cursor-not-allowed" : ""
+                }`}
+                onClick={handleNextPage}
+              >
+                <FaChevronRight
+                  className={`${
+                    currentPage * 10 >= totalUsers
+                      ? "text-gray-300"
+                      : "text-black"
+                  } text-xs`}
+                />
               </div>
             </div>
           </div>

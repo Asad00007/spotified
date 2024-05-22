@@ -13,22 +13,44 @@ const ManageUser = () => {
 
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const fetchUsers = async () => {
+  const [totalUsers, setTotalUsers] = useState(0);
+
+  const fetchUsers = async (offset = 0) => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await baseAxios.get("/admin_side/get_users/?role=user", {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      });
+      const response = await baseAxios.get(
+        `/admin_side/get_users/?role=user&limit=10&offset=${offset}`,
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
+      );
       const data = response.data;
-      setUsers(data.data);
+      setUsers(data.results);
+      setTotalUsers(data.count);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
   };
 
   useEffect(() => {
-    fetchUsers();
+    fetchUsers(0); // Initial fetch
   }, []);
+
+  const handleNextPage = () => {
+    const newPage = currentPage + 1;
+    const newOffset = (newPage - 1) * 10;
+    fetchUsers(newOffset);
+    setCurrentPage(newPage);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const newPage = currentPage - 1;
+      const newOffset = (newPage - 1) * 10;
+      fetchUsers(newOffset);
+      setCurrentPage(newPage);
+    }
+  };
   return (
     <div>
       <Sidebar active={2} />
@@ -214,21 +236,38 @@ const ManageUser = () => {
           </table>
           <div className="flex justify-between items-center flex-1">
             <span className="text-[#202224] text-[14px] font-normal">
-              Showing 1-09 of 78
+              Showing {currentPage * 10 - 9}-
+              {Math.min(currentPage * 10, totalUsers)} of {totalUsers}
             </span>
             <span className="text-[#202224] text-[14px] font-normal">
-              Page 1
+              Page {currentPage}
             </span>
             <div className="flex p-2">
-              <div className={`bg-white px-2 py-1 border border-gray-200 `}>
+              <div
+                className={`bg-white px-2 py-1 border border-gray-200 ${
+                  currentPage < 2 ? "cursor-not-allowed" : ""
+                }`}
+                onClick={handlePrevPage}
+              >
                 <FaChevronLeft
                   className={`${
                     currentPage < 2 ? "text-gray-300" : "text-black"
-                  } text-xs `}
+                  } text-xs`}
                 />
               </div>
-              <div className="bg-white px-2 py-1 border border-gray-200">
-                <FaChevronRight className=" text-xs text-black" />
+              <div
+                className={`bg-white px-2 py-1 border border-gray-200 ${
+                  currentPage * 10 >= totalUsers ? "cursor-not-allowed" : ""
+                }`}
+                onClick={handleNextPage}
+              >
+                <FaChevronRight
+                  className={`${
+                    currentPage * 10 >= totalUsers
+                      ? "text-gray-300"
+                      : "text-black"
+                  } text-xs`}
+                />
               </div>
             </div>
           </div>

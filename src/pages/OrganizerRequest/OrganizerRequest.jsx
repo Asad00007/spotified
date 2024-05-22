@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import Navbar from "../../components/Navbar";
@@ -8,9 +8,75 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import downArrow from "../../assets/downArrow.svg";
 
 import deleteIcon from "../../assets/deleteIcon.svg";
+import { baseAxios } from "../../utils/apiConfig";
 const OrganizerRequest = () => {
   const text = "Organizer Request";
+  const [getRequests, setGetRequests] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const fetchData = async (offset = 0) => {
+    const accesstoken = sessionStorage.getItem("access_token");
+    try {
+      const response = await baseAxios.get(
+        `/admin_side/get_approval_users/?offset=${offset}&limit=10`,
+        {
+          headers: { Authorization: `Bearer ${accesstoken}` },
+        }
+      );
+      const data = response.data;
+      setGetRequests(data.results);
+      setTotalUsers(data.count);
+    } catch (error) {
+      console.log("Error fetching data", error);
+    }
+  };
+  const handleConfirm = async (id) => {
+    const accesstoken = sessionStorage.getItem("access_token");
+    try {
+      const response = await baseAxios.post(
+        "/admin_side/approve/",
+        { user_id: id, accept: true },
+        { headers: { Authorization: `Bearer ${accesstoken}` } }
+      );
+      fetchData();
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+  const handleReject = async (id) => {
+    const accesstoken = sessionStorage.getItem("access_token");
+    try {
+      const response = await baseAxios.post(
+        "/admin_side/approve/",
+        {
+          user_id: id,
+          accept: false,
+        },
+        { headers: { Authorization: `Bearer ${accesstoken}` } }
+      );
+    } catch (error) {
+      console.log("Error", error);
+    }
+  };
+  useEffect(() => {
+    fetchData(0);
+  }, []);
+
+  const handleNextPage = () => {
+    const newPage = currentPage + 1;
+    const newOffset = (newPage - 1) * 10;
+    fetchData(newOffset);
+    setCurrentPage(newPage);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      const newPage = currentPage - 1;
+      const newOffset = (newPage - 1) * 10;
+      fetchData(newOffset);
+      setCurrentPage(newPage);
+    }
+  };
   return (
     <div>
       <Sidebar active={5} />
@@ -86,165 +152,74 @@ const OrganizerRequest = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
+              {getRequests.map((requests) => (
+                <tr
+                  className="bg-white border-b text-[#202224]"
+                  key={requests.id}
                 >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1231
-                </th>
-                <td className="px-6 py-4">Savannah Nguyen</td>
-                <td className="px-6 py-4">maka@gmail.com</td>
-                <td className="px-6 py-4">(319) 555-0115</td>
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Confirm
-                  </div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Deny
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-[#F9FAFB] border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1232
-                </th>
-                <td className="px-6 py-4">Albert Flores</td>
-                <td className="px-6 py-4">ustil@gmail.com</td>
-                <td className="px-6 py-4">(219) 555-0114</td>
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Confirm
-                  </div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Deny
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1233
-                </th>
-                <td className="px-6 py-4">Brooklyn Simmons</td>
-                <td className="px-6 py-4">quasiah@gmail.com</td>
-                <td className="px-6 py-4">(302) 555-0107</td>
-
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Confirm
-                  </div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Deny
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-[#F9FAFB] border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1234
-                </th>
-                <td className="px-6 py-4">Kathryn Murphy</td>
-                <td className="px-6 py-4">osgoodwy@gmail.com</td>
-                <td className="px-6 py-4">(205) 555-0100</td>
-
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Confirm
-                  </div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Deny
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-white border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1235
-                </th>
-                <td className="px-6 py-4">Jerome Bell</td>
-                <td className="px-6 py-4">zitka@gmail.com</td>
-                <td className="px-6 py-4">(303) 555-0105</td>
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Confirm
-                  </div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Deny
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-[#F9FAFB] border-b text-[#202224]">
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium whitespace-nowrap"
-                >
-                  <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />
-                  #1236
-                </th>
-                <td className="px-6 py-4">Arlene McCoy</td>
-                <td className="px-6 py-4">igerrin@gmail.com</td>
-                <td className="px-6 py-4">(405) 555-0128</td>
-                <td className="px-6 py-4">
-                  6391 Elgin St. Celina, Delaware 10299
-                </td>
-                <td className="px-6 py-4 flex gap-4">
-                  <div className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Confirm
-                  </div>
-                  <div className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]">
-                    Deny
-                  </div>
-                </td>
-              </tr>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium whitespace-nowrap"
+                  >
+                    <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />#
+                    {requests.id}
+                  </th>
+                  <td className="px-6 py-4">{requests.full_name}</td>
+                  <td className="px-6 py-4">{requests.email}</td>
+                  <td className="px-6 py-4">{requests.phoneNo}</td>
+                  <td className="px-6 py-4">{requests.address}</td>
+                  <td className="px-6 py-4 flex gap-4">
+                    <div
+                      className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
+                      onClick={() => handleConfirm(requests.id)}
+                    >
+                      Confirm
+                    </div>
+                    <div
+                      className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
+                      onClick={() => handleReject(requests.id)}
+                    >
+                      Deny
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
           <div className="flex justify-between items-center flex-1">
             <span className="text-[#202224] text-[14px] font-normal">
-              Showing 1-09 of 78
+              Showing {currentPage * 10 - 9}-
+              {Math.min(currentPage * 10, totalUsers)} of {totalUsers}
             </span>
             <span className="text-[#202224] text-[14px] font-normal">
-              Page 1
+              Page {currentPage}
             </span>
             <div className="flex p-2">
-              <div className={`bg-white px-2 py-1 border border-gray-200 `}>
+              <div
+                className={`bg-white px-2 py-1 border border-gray-200 ${
+                  currentPage < 2 ? "cursor-not-allowed" : ""
+                }`}
+                onClick={handlePrevPage}
+              >
                 <FaChevronLeft
                   className={`${
                     currentPage < 2 ? "text-gray-300" : "text-black"
-                  } text-xs `}
+                  } text-xs`}
                 />
               </div>
-              <div className="bg-white px-2 py-1 border border-gray-200">
-                <FaChevronRight className=" text-xs text-black" />
+              <div
+                className={`bg-white px-2 py-1 border border-gray-200 ${
+                  currentPage * 10 >= totalUsers ? "cursor-not-allowed" : ""
+                }`}
+                onClick={handleNextPage}
+              >
+                <FaChevronRight
+                  className={`${
+                    currentPage * 10 >= totalUsers
+                      ? "text-gray-300"
+                      : "text-black"
+                  } text-xs`}
+                />
               </div>
             </div>
           </div>

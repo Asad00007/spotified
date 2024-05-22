@@ -22,7 +22,7 @@ const Dashboard = () => {
         headers: { Authorization: `Bearer ${accesstoken}` },
       });
       const data = response.data;
-      console.log("Fetched games data:", data); // Additional log
+
       setLatestGames(data.data);
       if (data.data.length > 0) {
         const firstGameId = data.data[0].id;
@@ -35,7 +35,6 @@ const Dashboard = () => {
   };
 
   const fetchGamesbyId = async (gameId) => {
-    console.log("Fetching game by ID:", gameId);
     const accesstoken = sessionStorage.getItem("access_token");
     try {
       const response = await baseAxios.get(
@@ -43,9 +42,7 @@ const Dashboard = () => {
         { headers: { Authorization: `Bearer ${accesstoken}` } }
       );
       const data = response.data;
-      console.log("Fetched game by ID data:", data); // Additional log
-      setGamesById(data.results);
-      console.log("Games by ID results:", data.results);
+      setGamesById(data.data);
     } catch (error) {
       console.log("Error Fetching Data", error);
     }
@@ -54,7 +51,6 @@ const Dashboard = () => {
   const handleTabClick = (gameId) => {
     setSelectedGameId(gameId);
     fetchGamesbyId(gameId);
-    console.log("Tab clicked, gameId:", gameId);
   };
 
   useEffect(() => {
