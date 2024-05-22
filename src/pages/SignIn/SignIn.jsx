@@ -20,15 +20,11 @@ const SignIn = () => {
     formData.append("password", password);
 
     try {
-      const response = await baseAxios.post(
-        "/admin_side/login/",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await baseAxios.post("/admin_side/login/", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       sessionStorage.setItem("access_token", response.data.data.access_token);
       if (response.status === 200) {
         login();
