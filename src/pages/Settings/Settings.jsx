@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import Image from "../../assets/Image.svg";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Calender from "../../assets/Calender.svg";
 import { FaChevronDown } from "react-icons/fa";
 import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 const Settings = () => {
   const [dropDown, setDropDown] = useState(false);
+  const [startDate, setStartDate] = useState(false);
+  const [endDate, setEndDate] = useState(false);
   return (
     <>
       <Sidebar active={7} />
@@ -13,9 +17,9 @@ const Settings = () => {
       <div className="bg-[#FAFBFC] lg:w-[calc(100vw - 345px)] lg:ml-[345px] flex items-center justify-center font-sans">
         <div className="flex flex-col bg-white w-[95%] min-h-[882px] mx-auto max-w-full px-7 my-10 rounded-2xl">
           <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-            <div className="flex flex-col gap-1 min-w-[230px] md-1200:min-w-[300px] md:border-r  ">
+            <div className="flex flex-col gap-1 min-w-[300px] md-1000:min-w-[250px] md:border-r  md-800:pr-12 md-1200:pr-5 w-[300px] md-1000:w-auto ">
               <div className="py-3 md:py-7">
-                <h1 className="font-semibold text-2xl text-[#393939]">
+                <h1 className="font-semibold text-2xl text-[#393939] md:min-w-[230px] ">
                   Create Promo Code
                 </h1>
                 <p className="font-medium text-[14px] text-[#393939] opacity-50">
@@ -27,7 +31,7 @@ const Settings = () => {
               <h1 className="text-2xl font-semibold text-[#393939] self-start mb-2">
                 Banner Information
               </h1>
-              <p className="font-medium text-[#393939] self-start">
+              <p className="font-medium text-[#393939] self-start mb-2">
                 Banner Image
               </p>
               <div className="flex flex-col gap-1 items-center justify-center border border-dashed border-[#393939] opacity-50 py-5 px-7 lg-1350:w-[605px] lg-1300:h-[160px] rounded-[10px]">
@@ -45,20 +49,30 @@ const Settings = () => {
               </div>
               <div className="flex flex-wrap w-full gap-4 mt-3">
                 <div className="flex flex-col flex-1">
-                  <label className="font-medium text-[#393939]">
+                  <label className="font-medium text-[#393939] mb-2">
                     Start Date
                   </label>
                   <div className="flex items-center justify-between bg-[#F9FAFB] h-[46px] px-2 rounded-[10px]">
-                    <input type="text" className="bg-[#F9FAFB] outline-none" />
+                    <input
+                      type={startDate ? "date" : "text"}
+                      className="bg-[#F9FAFB] outline-none"
+                      onFocus={() => setStartDate(true)}
+                      onBlur={() => setStartDate(false)}
+                    />
                     <img src={Calender} alt="" />
                   </div>
                 </div>
                 <div className="flex flex-col flex-1">
-                  <label className="font-medium text-[#393939]">
+                  <label className="font-medium text-[#393939] mb-2">
                     Expiration Date
                   </label>
                   <div className="flex items-center justify-between bg-[#F9FAFB] h-[46px] px-2 rounded-[10px]">
-                    <input type="text" className="bg-[#F9FAFB] outline-none" />
+                    <input
+                      type={endDate ? "date" : "text"}
+                      className="bg-[#F9FAFB] outline-none"
+                      onFocus={() => setEndDate(true)}
+                      onBlur={() => setEndDate(false)}
+                    />
                     <img src={Calender} alt="" />
                   </div>
                 </div>
@@ -69,14 +83,15 @@ const Settings = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-            <div className="flex flex-col gap-1 min-w-[230px] md-1200:min-w-[300px] md:border-r  ">
+            <div className="flex flex-col gap-1 min-w-[300px] md-1000:min-w-[250px] md:border-r md-1200:pr-5 w-[300px] md-1000:w-auto ">
               <div className="py-3 md:py-7">
                 <h1 className="font-semibold text-2xl text-[#393939]">
                   Create Notifications
                 </h1>
                 <p className="font-medium text-[14px] text-[#393939] opacity-50">
-                  You can create notifications here and{" "}
-                  <br className="hidden md:flex" /> will send it to users
+                  You can create notifications here{" "}
+                  <br className="hidden md-1100:flex" /> and will send it to
+                  users
                 </p>
               </div>
             </div>
