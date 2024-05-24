@@ -157,7 +157,10 @@ const OrganizerRequest = () => {
             </div>
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-10 cursor-pointer" onClick={clearFilters}>
+            <div
+              className="flex justify-center items-center px-2 md:px-10 cursor-pointer"
+              onClick={clearFilters}
+            >
               <img src={deleteIcon} alt="" />
             </div>
           </div>
@@ -165,32 +168,32 @@ const OrganizerRequest = () => {
         <div className="h-0 md:h-6"></div>
 
         <div className="relative overflow-x-auto rounded-[15px] m-6">
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 border-collapse ">
-            <thead className="text-lg bg-[#2D8E0080] h-[65px] text-white rounded-t-lg">
-              <tr>
-                <th scope="col" className="px-6 py-3">
-                  User ID
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Email
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Phone Number
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Address
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {getRequests.length > 0 ? (
-                getRequests.map((requests) => (
+          {getRequests.length > 0 ? (
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 border-collapse ">
+              <thead className="text-lg bg-[#2D8E0080] h-[65px] text-white rounded-t-lg">
+                <tr>
+                  <th scope="col" className="px-6 py-3">
+                    User ID
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Name
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Email
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Phone Number
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Address
+                  </th>
+                  <th scope="col" className="px-6 py-3">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {getRequests.map((requests) => (
                   <tr
                     className="bg-white border-b text-[#202224]"
                     key={requests.id}
@@ -224,12 +227,14 @@ const OrganizerRequest = () => {
                       </div>
                     </td>
                   </tr>
-                ))
-              ) : (
-                <div className="flex justify-center"><span className="text-2xl">No Record Found</span></div>
-              )}
-            </tbody>
-          </table>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <div className="flex justify-center">
+              <span className="text-2xl">No Record Found</span>
+            </div>
+          )}
           {getRequests.length > 0 && (
             <div className="flex justify-between items-center flex-1">
               <span className="text-[#202224] text-[14px] font-normal">

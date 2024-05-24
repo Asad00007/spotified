@@ -9,7 +9,7 @@ import { baseAxios } from "../../utils/apiConfig";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const ManageOrganizer = () => {
-  const text = "Manage organizer";
+  const text = "Manage Organizer";
 
   const [organizers, setOrganizers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
