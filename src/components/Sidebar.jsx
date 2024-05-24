@@ -18,6 +18,7 @@ import messagewhite from "../assets/sidebar/messagewhite.svg";
 import setting from "../assets/sidebar/setting.svg";
 import settingwhite from "../assets/sidebar/settingwhite.svg";
 import signoutwhite from "../assets/sidebar/signoutwhite.svg";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ active }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -46,7 +47,7 @@ const Sidebar = ({ active }) => {
         aria-controls="default-sidebar"
         type="button"
         onClick={toggleSidebar}
-        className=" absolute inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+        className=" absolute z-50 inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -66,7 +67,7 @@ const Sidebar = ({ active }) => {
 
       <aside
         id="default-sidebar"
-        className={`fixed top-0 left-0 z-40 w-[345px] h-screen transition-transform ${
+        className={`fixed top-[-40px] lg:top-0 left-0 z-40 w-[345px] h-screen transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
         aria-label="Sidebar"
@@ -102,8 +103,8 @@ const Sidebar = ({ active }) => {
 
           <ul className="space-y-2 font-medium flex justify-center items-center flex-col gap-3">
             <li className="w-[252px]">
-              <a
-                href="/dashboard"
+              <Link
+                to="/dashboard"
                 className={`flex items-center py-4 px-6 gap-6 rounded-2xl group ${
                   active === 1 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -121,11 +122,11 @@ const Sidebar = ({ active }) => {
                 >
                   Dashboard
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/manage-users"
+              <Link
+                to="/manage-users"
                 className={`flex items-center py-4 px-6 gap-6 rounded-2xl group ${
                   active === 2 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -143,11 +144,11 @@ const Sidebar = ({ active }) => {
                 >
                   Manage Users
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/manage-organizer"
+              <Link
+                to="/manage-organizer"
                 className={`flex items-center py-4 px-6 gap-6 rounded-2xl group ${
                   active === 3 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -165,11 +166,11 @@ const Sidebar = ({ active }) => {
                 >
                   Manage Organizer
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/manage-communities"
+              <Link
+                to="/manage-communities"
                 className={`flex items-center py-4 px-6 gap-4 rounded-2xl group ${
                   active === 4 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -187,11 +188,11 @@ const Sidebar = ({ active }) => {
                 >
                   Manage Communities
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/organizer-request"
+              <Link
+                to="/organizer-request"
                 className={`flex items-center py-4 px-6 gap-6 rounded-2xl group ${
                   active === 5 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -209,11 +210,11 @@ const Sidebar = ({ active }) => {
                 >
                   Requests
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/messages"
+              <Link
+                to="/messages"
                 className={`flex items-center py-4 px-6 gap-5 rounded-2xl group ${
                   active === 6 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -231,11 +232,11 @@ const Sidebar = ({ active }) => {
                 >
                   Messages
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/settings"
+              <Link
+                to="/settings"
                 className={`flex items-center py-4 px-6 gap-4 rounded-2xl group ${
                   active === 7 ? "bg-primary text-white" : "text-secondary"
                 }`}
@@ -253,11 +254,11 @@ const Sidebar = ({ active }) => {
                 >
                   Settings
                 </span>
-              </a>
+              </ Link>
             </li>
             <li className="w-[252px]">
-              <a
-                href="/"
+              <Link
+                to="/"
                 onClick={() => {
                   sessionStorage.removeItem("access_token");
                 }}
@@ -267,7 +268,7 @@ const Sidebar = ({ active }) => {
               >
                 <img src={signoutwhite} alt="" />
                 <span className="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
-              </a>
+              </ Link>
             </li>
           </ul>
         </div>
