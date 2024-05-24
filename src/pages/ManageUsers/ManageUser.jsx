@@ -132,7 +132,7 @@ const ManageUser = () => {
         <div className="h-6"></div>
         <div className="ml-4 md:ml-8 flex justify-start items-center max-w-[834.58px] flex-wrap mb-12 md:mb-24 lg:mb-0 w-[90%] h-[40px] md:h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-5 lg-1350:px-12">
+            <div className="flex justify-center items-center px-[6px] md:px-5 lg-1350:px-12">
               <img
                 className="h-[20px] md:h-auto w-[20px] md:w-auto"
                 src={filterIcon}
@@ -177,7 +177,7 @@ const ManageUser = () => {
             )}
           </div>
           <div className="relative flex">
-            <div className="flex justify-center items-center px-2 md:px-5">
+            <div className="flex justify-center items-center px-[6px]  md:px-5">
               <div
                 className="flex justify-between w-auto md:w-[108px] items-center"
                 onClick={toggleStatusDropdown}
@@ -218,7 +218,7 @@ const ManageUser = () => {
           </div>
 
           <div className="relative flex">
-            <div className="flex justify-center items-center px-2 md:px-5">
+            <div className="flex justify-center items-center px-[6px] md:px-5">
               <div
                 className="flex justify-between w-auto md:w-[108px] items-center"
                 onClick={toggleSportsDropdown}
@@ -293,7 +293,7 @@ const ManageUser = () => {
           </div>
           <div className=" flex">
             <div
-              className="flex justify-center items-center px-2 md:px-5 cursor-pointer"
+              className="flex justify-center items-center px-[6px] md:px-5 cursor-pointer"
               onClick={clearFilters}
             >
               <img src={deleteIcon} alt="" />

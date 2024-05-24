@@ -11,8 +11,8 @@ const Navbar = ({ text }) => {
     <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] h-auto md:min-h-[120px] flex items-center">
       <nav className="bg-white border-gray-200 w-full">
         <div className=" flex flex-col md:flex-row justify-between items-center p-4 gap-2">
-          <a className="flex items-center space-x-3 rtl:space-x-reverse w-[200px] lg-1350:w-[350px]">
-            <span className="self-center text-center text-xl md:text-4xl font-semibold ml-6">
+          <a className="flex items-center justify-center md:justify-start space-x-3 rtl:space-x-reverse w-[200px] lg-1350:w-[350px]">
+            <span className=" text-center text-xl md:text-4xl font-semibold ml-0 md:ml-6">
               {text}
             </span>
           </a>
