@@ -152,77 +152,86 @@ const OrganizerRequest = () => {
               </tr>
             </thead>
             <tbody>
-              {getRequests.map((requests) => (
-                <tr
-                  className="bg-white border-b text-[#202224]"
-                  key={requests.id}
-                >
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium whitespace-nowrap"
+              {getRequests.length > 0 ? (
+                getRequests.map((requests) => (
+                  <tr
+                    className="bg-white border-b text-[#202224]"
+                    key={requests.id}
                   >
-                    <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />#
-                    {requests.id}
-                  </th>
-                  <td className="px-6 py-4">{requests.full_name}</td>
-                  <td className="px-6 py-4">{requests.email}</td>
-                  <td className="px-6 py-4">{requests.phoneNo}</td>
-                  <td className="px-6 py-4">{requests.address}</td>
-                  <td className="px-6 py-4 flex gap-4">
-                    <div
-                      className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
-                      onClick={() => handleConfirm(requests.id)}
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap"
                     >
-                      Confirm
-                    </div>
-                    <div
-                      className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
-                      onClick={() => handleReject(requests.id)}
-                    >
-                      Deny
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                      <input
+                        className="mr-2 accent-[#E0E0E0]"
+                        type="checkbox"
+                      />
+                      #{requests.id}
+                    </th>
+                    <td className="px-6 py-4">{requests.full_name}</td>
+                    <td className="px-6 py-4">{requests.email}</td>
+                    <td className="px-6 py-4">{requests.phoneNo}</td>
+                    <td className="px-6 py-4">{requests.address}</td>
+                    <td className="px-6 py-4 flex gap-4">
+                      <div
+                        className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
+                        onClick={() => handleConfirm(requests.id)}
+                      >
+                        Confirm
+                      </div>
+                      <div
+                        className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
+                        onClick={() => handleReject(requests.id)}
+                      >
+                        Deny
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <div className="flex justify-center"><span className="text-2xl">No Record Found</span></div>
+              )}
             </tbody>
           </table>
-          <div className="flex justify-between items-center flex-1">
-            <span className="text-[#202224] text-[14px] font-normal">
-              Showing {currentPage * 10 - 9}-
-              {Math.min(currentPage * 10, totalUsers)} of {totalUsers}
-            </span>
-            <span className="text-[#202224] text-[14px] font-normal">
-              Page {currentPage}
-            </span>
-            <div className="flex p-2">
-              <div
-                className={`bg-white px-2 py-1 border border-gray-200 ${
-                  currentPage < 2 ? "cursor-not-allowed" : ""
-                }`}
-                onClick={handlePrevPage}
-              >
-                <FaChevronLeft
-                  className={`${
-                    currentPage < 2 ? "text-gray-300" : "text-black"
-                  } text-xs`}
-                />
-              </div>
-              <div
-                className={`bg-white px-2 py-1 border border-gray-200 ${
-                  currentPage * 10 >= totalUsers ? "cursor-not-allowed" : ""
-                }`}
-                onClick={handleNextPage}
-              >
-                <FaChevronRight
-                  className={`${
-                    currentPage * 10 >= totalUsers
-                      ? "text-gray-300"
-                      : "text-black"
-                  } text-xs`}
-                />
+          {getRequests.length > 0 && (
+            <div className="flex justify-between items-center flex-1">
+              <span className="text-[#202224] text-[14px] font-normal">
+                Showing {currentPage * 10 - 9}-
+                {Math.min(currentPage * 10, totalUsers)} of {totalUsers}
+              </span>
+              <span className="text-[#202224] text-[14px] font-normal">
+                Page {currentPage}
+              </span>
+              <div className="flex p-2">
+                <div
+                  className={`bg-white px-2 py-1 border border-gray-200 ${
+                    currentPage < 2 ? "cursor-not-allowed" : ""
+                  }`}
+                  onClick={handlePrevPage}
+                >
+                  <FaChevronLeft
+                    className={`${
+                      currentPage < 2 ? "text-gray-300" : "text-black"
+                    } text-xs`}
+                  />
+                </div>
+                <div
+                  className={`bg-white px-2 py-1 border border-gray-200 ${
+                    currentPage * 10 >= totalUsers ? "cursor-not-allowed" : ""
+                  }`}
+                  onClick={handleNextPage}
+                >
+                  <FaChevronRight
+                    className={`${
+                      currentPage * 10 >= totalUsers
+                        ? "text-gray-300"
+                        : "text-black"
+                    } text-xs`}
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
