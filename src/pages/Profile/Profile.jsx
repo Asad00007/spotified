@@ -151,7 +151,7 @@ const Profile = () => {
                     <input
                       type="text"
                       className="border p-2 w-[80%]"
-                      value={temp || name}
+                      defaultValue={temp || name}
                       onChange={(e) => setTemp(e.target.value)}
                     />
                     <div className="flex gap-5">
@@ -202,7 +202,7 @@ const Profile = () => {
                       <input
                         type="email"
                         className="border p-2 w-[80%]"
-                        value={temp}
+                        defaultValue={temp}
                         onChange={(e) => setTemp(e.target.value)}
                       />
                       <div className="flex gap-5">
@@ -248,7 +248,7 @@ const Profile = () => {
                         type="text"
                         maxLength={15}
                         className="border p-2 w-[80%]"
-                        value={temp || phone}
+                        defaultValue={temp || phone}
                         onChange={(e) => setTemp(e.target.value)}
                       />
                       <div className="flex gap-5">
@@ -292,7 +292,7 @@ const Profile = () => {
                       <div className="border p-2 w-[80%] flex items-center">
                         <input
                           type={showPass ? "password" : "text"}
-                          value={temp}
+                          defaultValue={temp}
                           className="flex-1 md:w-[300px] outline-none"
                           onChange={(e) => setTemp(e.target.value)}
                         />
@@ -354,7 +354,7 @@ const Profile = () => {
                         type="text"
                         maxLength={15}
                         className="border p-2 w-[80%]"
-                        value={temp}
+                        defaultValue={temp}
                         onChange={(e) => setTemp(e.target.value)}
                       />
                       <div className="flex gap-5">
