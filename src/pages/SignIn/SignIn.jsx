@@ -36,7 +36,7 @@ const SignIn = () => {
       sessionStorage.setItem("access_token", response.data.data.access_token);
       if (response.status === 200) {
         login();
-        navigate("/dashboard");
+        navigate("/");
       } else {
         setSnackbarOpen(true);
       }

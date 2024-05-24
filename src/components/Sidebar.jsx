@@ -19,10 +19,15 @@ import setting from "../assets/sidebar/setting.svg";
 import settingwhite from "../assets/sidebar/settingwhite.svg";
 import signoutwhite from "../assets/sidebar/signoutwhite.svg";
 import { Link } from "react-router-dom";
+import Popup from "./Popup";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ active }) => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const navigate = useNavigate()
+
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -39,6 +44,12 @@ const Sidebar = ({ active }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  const handleLogout = () => {
+    sessionStorage.removeItem("access_token");
+    setShowLogoutModal(false);
+    navigate("/signin")
+  };
   return (
     <div className="relative" ref={sidebarRef}>
       <button
@@ -122,7 +133,7 @@ const Sidebar = ({ active }) => {
                 >
                   Dashboard
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
               <Link
@@ -144,7 +155,7 @@ const Sidebar = ({ active }) => {
                 >
                   Manage Users
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
               <Link
@@ -166,7 +177,7 @@ const Sidebar = ({ active }) => {
                 >
                   Manage Organizer
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
               <Link
@@ -188,7 +199,7 @@ const Sidebar = ({ active }) => {
                 >
                   Manage Communities
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
               <Link
@@ -210,7 +221,7 @@ const Sidebar = ({ active }) => {
                 >
                   Requests
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
               <Link
@@ -232,7 +243,7 @@ const Sidebar = ({ active }) => {
                 >
                   Messages
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
               <Link
@@ -254,25 +265,43 @@ const Sidebar = ({ active }) => {
                 >
                   Settings
                 </span>
-              </ Link>
+              </Link>
             </li>
             <li className="w-[252px]">
-              <Link
-                to="/"
-                onClick={() => {
-                  sessionStorage.removeItem("access_token");
-                }}
+              <button
+                onClick={() => setShowLogoutModal(true)}
                 className={`flex items-center py-4 px-6 gap-1 rounded-2xl group ${
                   active === 8 ? "bg-primary text-white" : "text-secondary"
                 }`}
               >
-                <img src={signoutwhite} alt="" />
+                <img src={signoutwhite} alt="signoutwhite" />
                 <span className="flex-1 ms-3 whitespace-nowrap">Sign Out</span>
-              </ Link>
+              </button>
             </li>
           </ul>
         </div>
       </aside>
+      {showLogoutModal && (
+        <Popup setTrigger={setShowLogoutModal}>
+          <h2 className="text-xl font-semibold mt-4">
+            Are you sure you want to logout?
+          </h2>
+          <div className="flex gap-4 mt-4">
+            <button
+              onClick={handleLogout}
+              className="px-4 py-2 bg-primary text-white rounded-lg"
+            >
+              Yes, Logout
+            </button>
+            <button
+              onClick={() => setShowLogoutModal(false)}
+              className="px-4 py-2 bg-gray-300 rounded-lg"
+            >
+              Cancel
+            </button>
+          </div>
+        </Popup>
+      )}
     </div>
   );
 };

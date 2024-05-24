@@ -7,7 +7,7 @@ const ProtectedRouteWrapper = ({ children }) => {
   const { isLoggedIn } = useAuth();
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate("/");
+      navigate("/signin");
     }
   }, [isLoggedIn, navigate]);
 

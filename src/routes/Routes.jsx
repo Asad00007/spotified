@@ -16,9 +16,9 @@ const AppRoutes = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/otp" element={<OTP />} />
-        <Route path="/dashboard" element={<ProtectedRouteWrapper><Dashboard /></ProtectedRouteWrapper>} />
+        <Route path="/" element={<ProtectedRouteWrapper><Dashboard /></ProtectedRouteWrapper>} />
         <Route path="/manage-users" element={<ProtectedRouteWrapper><ManageUser /></ProtectedRouteWrapper>} />
         <Route path="/manage-organizer" element={<ProtectedRouteWrapper><ManageOrganizer /></ProtectedRouteWrapper>} />
         <Route path="/organizer-request" element={<ProtectedRouteWrapper><OrganizerRequest /></ProtectedRouteWrapper>} />
