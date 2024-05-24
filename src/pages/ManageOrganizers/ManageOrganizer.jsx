@@ -72,7 +72,7 @@ const ManageOrganizer = () => {
 
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="h-6"></div>
-        <div className="mx-auto mb:ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0 md:w-[95%] w-[90%] h-[70px] bg-white rounded-[15px]">
+        <div className="mx-auto md:ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0 md:w-[95%] w-[90%] h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
             <div className="flex justify-start md:justify-center items-center px-2 mr-2 md:px-12">
               <img
@@ -99,7 +99,7 @@ const ManageOrganizer = () => {
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
             {isUserDropdownOpen && (
-              <div className="absolute z-50 top-0 w-10 flex justify-center bg-white border rounded shadow-lg">
+              <div className="absolute z-50 top-0 w-full h-[100px] md:h-[120px] overflow-y-scroll flex justify-center bg-white border rounded shadow-lg">
                 <ul>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((option) => (
                     <li

@@ -130,7 +130,7 @@ const ManageUser = () => {
 
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="h-6"></div>
-        <div className="ml-4 md:ml-8 flex justify-start items-center max-w-[834.58px] flex-wrap mb-12 md:mb-24 lg:mb-0 w-[90%] h-[40px] md:h-[70px] bg-white rounded-[15px]">
+        <div className="mx-auto md:ml-8 flex justify-start items-center max-w-[834.58px] flex-wrap mb-12 md:mb-24 lg:mb-0 w-[90%] h-[40px] md:h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
             <div className="flex justify-center items-center px-[4px] md:px-5 lg-1350:px-12">
               <img
