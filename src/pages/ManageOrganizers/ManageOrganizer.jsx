@@ -72,9 +72,9 @@ const ManageOrganizer = () => {
 
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="h-6"></div>
-        <div className=" ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0 md:w-[95%] w-[90%] h-[70px] bg-white rounded-[15px]">
+        <div className="mx-auto mb:ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0 md:w-[95%] w-[90%] h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-12">
+            <div className="flex justify-start md:justify-center items-center px-2 mr-2 md:px-12">
               <img
                 className="h-[20px] md:h-auto w-[20px] md:w-auto"
                 src={filterIcon}
@@ -82,7 +82,7 @@ const ManageOrganizer = () => {
               />
             </div>
             <div>
-              <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
+              <img className="h-[40px] md:h-[72px] mr-2 mb:mr-0" src={lineFilter} alt="" />
             </div>
           </div>
           <div className="relative flex">
