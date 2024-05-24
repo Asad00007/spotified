@@ -14,6 +14,17 @@ const OrganizerRequest = () => {
   const [getRequests, setGetRequests] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
+  const [perPage, setPerPage] = useState(10);
+
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
+  };
+
+  const handlePerPageChange = (option) => {
+    setPerPage(parseInt(option));
+  };
+
   const fetchData = async (offset = 0) => {
     const accesstoken = sessionStorage.getItem("access_token");
     try {
@@ -59,8 +70,8 @@ const OrganizerRequest = () => {
     }
   };
   useEffect(() => {
-    fetchData(0);
-  }, []);
+    fetchData(0); // Initial fetch
+  }, [perPage]);
 
   const handleNextPage = () => {
     const newPage = currentPage + 1;
@@ -76,6 +87,10 @@ const OrganizerRequest = () => {
       fetchData(newOffset);
       setCurrentPage(newPage);
     }
+  };
+  const clearFilters = () => {
+    setPerPage(10);
+    setCurrentPage(1);
   };
   return (
     <div>
@@ -97,9 +112,12 @@ const OrganizerRequest = () => {
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
           </div>
-          <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-12">
-              <div className="flex justify-between w-auto md:w-[108px] items-center">
+          <div className="relative flex">
+            <div className="flex justify-center items-center px-2 md:px-5">
+              <div
+                className="flex justify-between w-auto md:w-[108px] items-center"
+                onClick={toggleUserDropdown}
+              >
                 <span className="text-[14px]">User ID</span>
                 <img src={downArrow} alt="" />
               </div>
@@ -107,6 +125,25 @@ const OrganizerRequest = () => {
             <div>
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
+            {isUserDropdownOpen && (
+              <div className="absolute z-50 top-0 w-10 flex justify-center bg-white border rounded shadow-lg">
+                <ul>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((option) => (
+                    <li
+                      key={option}
+                      value={option}
+                      onClick={() => {
+                        handlePerPageChange(option);
+                        toggleUserDropdown();
+                      }}
+                      className="cursor-pointer"
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           <div className=" flex">
             <div className="flex justify-center items-center px-2 md:px-10">
@@ -120,7 +157,7 @@ const OrganizerRequest = () => {
             </div>
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-10">
+            <div className="flex justify-center items-center px-2 md:px-10 cursor-pointer" onClick={clearFilters}>
               <img src={deleteIcon} alt="" />
             </div>
           </div>
