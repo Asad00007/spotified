@@ -15,12 +15,18 @@ const ManageUser = () => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
+  const [perPage, setPerPage] = useState(10);
 
   const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
   const [isSportsDropdownOpen, setIsSportsDropdownOpen] = useState(false);
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
 
   const [selectedStatus, setSelectedStatus] = useState("");
   const [selectedSport, setSelectedSport] = useState("");
+
+  const handlePerPageChange = (option) => {
+    setPerPage(parseInt(option));
+  };
 
   const handleStatusSelect = (status) => {
     setSelectedStatus(status);
@@ -32,6 +38,10 @@ const ManageUser = () => {
     setSelectedSport(sport);
     setIsSportsDropdownOpen(false);
     applyFilters(selectedStatus, sport);
+  };
+
+  const toggleUserDropdown = () => {
+    setIsUserDropdownOpen(!isUserDropdownOpen);
   };
 
   const toggleStatusDropdown = () => {
@@ -46,7 +56,7 @@ const ManageUser = () => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
       const response = await baseAxios.get(
-        `/admin_side/get_users/?role=user&limit=10&offset=${offset}`,
+        `/admin_side/get_users/?role=user&limit=${perPage}&offset=${offset}`,
         {
           headers: { Authorization: `Bearer ${accessToken}` },
         }
@@ -62,31 +72,32 @@ const ManageUser = () => {
 
   const applyFilters = (status, sport) => {
     let filteredUsers = allUsers;
-  
+
     if (status) {
       filteredUsers = filteredUsers.filter((user) =>
         status === "Active" ? user.approved : !user.approved
       );
     }
-    
+
     if (sport) {
-      filteredUsers = filteredUsers.filter((user) => user.sports.includes(sport));
+      filteredUsers = filteredUsers.filter((user) =>
+        user.sports.includes(sport)
+      );
     }
-  
+
     setTotalUsers(filteredUsers.length);
     setCurrentPage(1);
-  
+
     if (filteredUsers.length === 0) {
       setUsers([]);
     } else {
       setUsers(filteredUsers.slice(0, 10));
     }
   };
-  
 
   useEffect(() => {
     fetchUsers(0); // Initial fetch
-  }, []);
+  }, [perPage]);
 
   const handleNextPage = () => {
     const newPage = currentPage + 1;
@@ -109,6 +120,7 @@ const ManageUser = () => {
     setIsStatusDropdownOpen(false);
     setIsSportsDropdownOpen(false);
     setUsers(allUsers.slice(0, 10));
+    setPerPage(10);
     setCurrentPage(1);
   };
   return (
@@ -131,9 +143,12 @@ const ManageUser = () => {
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
           </div>
-          <div className=" flex">
+          <div className="relative flex">
             <div className="flex justify-center items-center px-2 md:px-5">
-              <div className="flex justify-between w-auto md:w-[108px] items-center">
+              <div
+                className="flex justify-between w-auto md:w-[108px] items-center"
+                onClick={toggleUserDropdown}
+              >
                 <span className="text-[14px]">User ID</span>
                 <img src={downArrow} alt="" />
               </div>
@@ -141,6 +156,25 @@ const ManageUser = () => {
             <div>
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
+            {isUserDropdownOpen && (
+              <div className="absolute z-50 top-0 w-10 flex justify-center bg-white border rounded shadow-lg">
+                <ul>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((option) => (
+                    <li
+                      key={option}
+                      value={option}
+                      onClick={() => {
+                        handlePerPageChange(option);
+                        toggleUserDropdown();
+                      }}
+                      className="cursor-pointer"
+                    >
+                      {option}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
           <div className="relative flex">
             <div className="flex justify-center items-center px-2 md:px-5">
@@ -148,7 +182,9 @@ const ManageUser = () => {
                 className="flex justify-between w-auto md:w-[108px] items-center"
                 onClick={toggleStatusDropdown}
               >
-                <span className="text-[14px]">{selectedStatus || "Status" }</span>
+                <span className="text-[14px]">
+                  {selectedStatus || "Status"}
+                </span>
                 <img src={downArrow} alt="" />
               </div>
             </div>
@@ -187,7 +223,7 @@ const ManageUser = () => {
                 className="flex justify-between w-auto md:w-[108px] items-center"
                 onClick={toggleSportsDropdown}
               >
-                <span className="text-[14px]">{selectedSport || "Sports" }</span>
+                <span className="text-[14px]">{selectedSport || "Sports"}</span>
                 <img src={downArrow} alt="" />
               </div>
             </div>
@@ -256,7 +292,10 @@ const ManageUser = () => {
             )}
           </div>
           <div className=" flex">
-            <div className="flex justify-center items-center px-2 md:px-5" onClick={clearFilters}>
+            <div
+              className="flex justify-center items-center px-2 md:px-5 cursor-pointer"
+              onClick={clearFilters}
+            >
               <img src={deleteIcon} alt="" />
             </div>
           </div>
