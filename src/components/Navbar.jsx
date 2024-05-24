@@ -12,7 +12,7 @@ const Navbar = ({ text }) => {
       <nav className="bg-white border-gray-200 w-full">
         <div className=" flex flex-col md:flex-row justify-between items-center  p-4 gap-2">
           <a className="flex items-center space-x-3 rtl:space-x-reverse w-[200px] lg-1350:w-[350px]">
-            <span className="self-center text-3xl md:text-4xl font-semibold ml-6">
+            <span className="self-center text-center text-3xl md:text-4xl font-semibold ml-6">
               {text}
             </span>
           </a>
