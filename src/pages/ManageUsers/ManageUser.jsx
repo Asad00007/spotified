@@ -119,7 +119,7 @@ const ManageUser = () => {
     setSelectedSport("");
     setIsStatusDropdownOpen(false);
     setIsSportsDropdownOpen(false);
-    setUsers(allUsers.slice(0, 10));
+    fetchUsers(0);
     setPerPage(10);
     setCurrentPage(1);
   };
