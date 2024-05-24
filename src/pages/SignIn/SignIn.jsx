@@ -57,22 +57,6 @@ const SignIn = () => {
             required
           />
           <label className="mt-8 font-semibold text-xl" htmlFor="">
-            Phone Number
-          </label>
-          <div className="w-full flex gap-3 bg-[#F3F3F3] p-5 rounded-[15px] min-h-16 max-h-16">
-            <input
-              type="text"
-              placeholder="+971"
-              className="w-[50px] border-r border-secondary bg-[#F3F3F3] outline-none"
-              maxLength={4}
-            />
-            <input
-              type="text"
-              placeholder="123456789"
-              className="flex-1 outline-none bg-[#F3F3F3]"
-            />
-          </div>
-          <label className="mt-8 font-semibold text-xl" htmlFor="">
             Password
           </label>
           <input
