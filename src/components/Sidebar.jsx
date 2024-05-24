@@ -46,7 +46,7 @@ const Sidebar = ({ active }) => {
         aria-controls="default-sidebar"
         type="button"
         onClick={toggleSidebar}
-        className=" absolute inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
+        className=" absolute z-50 inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 "
       >
         <span className="sr-only">Open sidebar</span>
         <svg
@@ -66,7 +66,7 @@ const Sidebar = ({ active }) => {
 
       <aside
         id="default-sidebar"
-        className={`fixed top-0 left-0 z-40 w-[345px] h-screen transition-transform ${
+        className={`fixed top-[-40px] lg:top-0 left-0 z-40 w-[345px] h-screen transition-transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
         aria-label="Sidebar"
