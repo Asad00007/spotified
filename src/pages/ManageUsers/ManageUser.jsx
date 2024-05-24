@@ -15,6 +15,17 @@ const ManageUser = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
 
+  const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
+  const [isSportsDropdownOpen, setIsSportsDropdownOpen] = useState(false);
+
+  const toggleStatusDropdown = () => {
+    setIsStatusDropdownOpen(!isStatusDropdownOpen);
+  };
+
+  const toggleSportsDropdown = () => {
+    setIsSportsDropdownOpen(!isSportsDropdownOpen);
+  };
+
   const fetchUsers = async (offset = 0) => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
@@ -82,9 +93,12 @@ const ManageUser = () => {
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
           </div>
-          <div className=" flex">
+          <div className="relative flex">
             <div className="flex justify-center items-center px-2 md:px-5">
-              <div className="flex justify-between w-auto md:w-[108px] items-center">
+              <div
+                className="flex justify-between w-auto md:w-[108px] items-center"
+                onClick={toggleStatusDropdown}
+              >
                 <span className="text-[14px]">Status</span>
                 <img src={downArrow} alt="" />
               </div>
@@ -92,10 +106,26 @@ const ManageUser = () => {
             <div>
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
+            {isStatusDropdownOpen && (
+            <div className="absolute top-0 bg-white border rounded shadow-lg">
+              <ul>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleStatusDropdown}>
+                  Active
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleStatusDropdown}>
+                  Offline
+                </li>
+              </ul>
+            </div>
+          )}
           </div>
-          <div className=" flex">
+          
+          <div className="relative flex">
             <div className="flex justify-center items-center px-2 md:px-5">
-              <div className="flex justify-between w-auto md:w-[108px] items-center">
+              <div
+                className="flex justify-between w-auto md:w-[108px] items-center"
+                onClick={toggleSportsDropdown}
+              >
                 <span className="text-[14px]">Sports</span>
                 <img src={downArrow} alt="" />
               </div>
@@ -103,6 +133,30 @@ const ManageUser = () => {
             <div>
               <img className="h-[40px] md:h-[72px]" src={lineFilter} alt="" />
             </div>
+            {isSportsDropdownOpen && (
+            <div className="absolute top-0 bg-white border rounded shadow-lg z-50">
+              <ul>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleSportsDropdown}>
+                  Cricket
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleSportsDropdown}>
+                  Football
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleSportsDropdown}>
+                  Golf
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleSportsDropdown}>
+                  Badminton
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleSportsDropdown}>
+                  Tennis
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-200 cursor-pointer" onClick={toggleSportsDropdown}>
+                  Basketball
+                </li>
+              </ul>
+            </div>
+          )}
           </div>
           <div className=" flex">
             <div className="flex justify-center items-center px-2 md:px-5">
