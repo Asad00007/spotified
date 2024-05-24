@@ -225,7 +225,7 @@ const Dashboard = () => {
           </div>
         </div>
         {/* Cards */}
-        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-6 lg-1350:gap-x-6 lg-1500:gap-x-8 gap-y-14 justify-center mb-5">
+        <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-6 lg-1350:gap-x-6 lg-1500:gap-x-8 gap-y-14 mb-5 ml-[3%]">
           {gamesById?.map((games) => (
             <div
               className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]"
