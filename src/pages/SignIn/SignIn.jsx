@@ -4,11 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { baseAxios } from "../../utils/apiConfig";
 import { useAuth } from "../../auth/AuthContext";
 import Snackbar from '@mui/material/Snackbar';
+import { RotatingLines } from "react-loader-spinner";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const SignIn = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    setLoading(true);
 
     const formData = new FormData();
     formData.append("email", email);
@@ -40,10 +43,18 @@ const SignIn = () => {
     } catch (error) {
       console.error("Error logging in:", error);
       setSnackbarOpen(true);
+    } finally {
+      setLoading(false); 
     }
   };
 
   return (
+    <div className="signin-container">
+      {loading && (
+        <div className="loader-overlay fixed top-0 left-0 w-full h-full bg-white bg-opacity-10 backdrop-filter backdrop-blur-md flex justify-center items-center z-50">
+          <RotatingLines color="#123abc" loading={loading} />
+        </div>
+      )}
     <div className="flex flex-col md-1200:flex-row">
       <div className="flex items-center justify-center bg-primary md-1200:w-[48%] md-1200:h-screen h-28 w-full">
         <img src={Logo} alt="Logo" className="h-24" />
@@ -110,6 +121,7 @@ const SignIn = () => {
         message="Login Failed! Check credentials and try again"
         key={'top' + 'right'}
       />
+    </div>
     </div>
   );
 };
