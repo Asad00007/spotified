@@ -8,12 +8,14 @@ import customerIconNew from "../../assets/customerIconNew.svg";
 import weeklyOverview from "../../assets/weeklyOverwiewGraph.svg";
 import firstImg from "../../assets/first.png";
 import secondImg from "../../assets/second.png";
+import WeeklyChart from "../../utils/WeeklyChart";
 import { baseAxios } from "../../utils/apiConfig";
 
 const Dashboard = () => {
   const [latestGames, setLatestGames] = useState([]);
   const [selectedGameId, setSelectedGameId] = useState(1);
   const [gamesById, setGamesById] = useState([]);
+  const weeklyData = [2000, 5000, 8000, 6000, 10000, 7000, 4000];
   const text = "Dashboard";
   const fetchGames = async () => {
     const accesstoken = sessionStorage.getItem("access_token");
@@ -174,11 +176,12 @@ const Dashboard = () => {
             </div>
 
             <div className="flex mt-0 md:mt-10">
-              <img src={weeklyOverview} alt="" />
+              {/* <img src={weeklyOverview} alt="" /> */}
+              <WeeklyChart data={weeklyData} />
             </div>
 
-            <div className="flex justify-center items-center">
-              <span className="mt-4 h-5 text-base font-medium text-[#393939]">
+            <div className="flex mt-12  justify-center items-center">
+              <span className="mt-4 h-5 ml-10 text-base font-medium text-[#393939]">
                 No of games
               </span>
             </div>
