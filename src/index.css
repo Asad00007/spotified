@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#scrollBar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+#scrollBar::-webkit-scrollbar {
+    display: none;
+}
+
+.sidebarHide {
+    left: -350px;
+}
+
+/* input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+  } */
