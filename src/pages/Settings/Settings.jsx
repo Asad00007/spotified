@@ -111,7 +111,7 @@ const Settings = () => {
                 Banner Information
               </h1>
               <p className="font-medium text-[#393939] self-start mb-2">
-                Banner Image
+                Banner Images
               </p>
               <div
                 className="flex flex-col items-center cursor-pointer justify-center border border-dashed text-center border-[#393939] w-[100%] h-[160px] rounded-[10px] overflow-hidden"
