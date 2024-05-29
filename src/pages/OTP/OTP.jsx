@@ -58,7 +58,9 @@ const OTP = () => {
             <span className=" font-medium text-secondary text-[15px]">
               Didn't receive OTP?
             </span>
-            <span className=" font-medium text-primary text-[15px]">Resend Code</span>
+            <span className=" font-medium text-primary text-[15px]">
+              Resend Code
+            </span>
           </div>
           <div className="mt-8 flex justify-center items-center">
             <button className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]">
