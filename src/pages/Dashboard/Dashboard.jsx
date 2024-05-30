@@ -228,14 +228,14 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="flex mt-0 md:mt-10">
+            <div className="flex mt-0 md:mt-6">
               {/* <img src={weeklyOverview} alt="" /> */}
               {/* <WeeklyChart data={transformData(weeklyData)} />  */}
               <WeeklyChart data={weeklyDatas} />
             </div>
 
             <div className="flex justify-center items-center">
-              <span className="mt-4 h-5 text-base font-medium text-[#393939]">
+              <span className="mt-6 h-5 text-base font-medium text-[#393939]">
                 No of games
               </span>
             </div>
