@@ -27,14 +27,11 @@ const Profile = () => {
   const fetchProfile = async () => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await baseAxios.get(
-        "/auth/get_profile/",
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        }
-      );
+      const response = await baseAxios.get("/auth/get_profile/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
       const data = response.data;
 
       setName(data.data.full_name);
@@ -48,16 +45,12 @@ const Profile = () => {
   const updateProfile = async (formData) => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
-      const response = await baseAxios.post(
-        "/auth/update_profile/",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await baseAxios.post("/auth/update_profile/", formData, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("Profile updated successfully:", response.data.msg);
       fetchProfile();
     } catch (error) {

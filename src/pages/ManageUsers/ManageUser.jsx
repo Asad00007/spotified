@@ -7,6 +7,7 @@ import downArrow from "../../assets/downArrow.svg";
 import Cancel from "../../assets/icons/Cancel.svg";
 import deleteIcon from "../../assets/deleteIcon.svg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Popup from "../../components/Popup";
 import { baseAxios } from "../../utils/apiConfig";
 
 const ManageUser = () => {
@@ -18,7 +19,7 @@ const ManageUser = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
   const [perPage, setPerPage] = useState(10);
-
+  const [current, setCurrent] = useState(0);
   const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
   const [isSportsDropdownOpen, setIsSportsDropdownOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -189,8 +190,33 @@ const ManageUser = () => {
     setPerPage(10);
     setCurrentPage(1);
   };
+
+  const onCancel = () => {
+    setCurrent(0);
+  };
   return (
     <div>
+      {current && (
+        <Popup setTrigger={setCurrent}>
+          <h1 className="text-xl font-bold mt-5 mb-3">
+            Are you sure you want to delete this user?
+          </h1>
+          <div className="flex gap-5 mb-5">
+            <button
+              className="border-2 border-primary p-[3px] text-[13px] md:text-base w-[90px] md:w-[100px] rounded-md"
+              onClick={onCancel}
+            >
+              No
+            </button>
+            <button
+              className="bg-primary p-[3px] text-[13px] md:text-base w-[90px] md:w-[100px] rounded-md text-white"
+              // onClick={onNameSave}
+            >
+              Yes
+            </button>
+          </div>
+        </Popup>
+      )}
       <Sidebar active={2} />
       <Navbar text={text} />
 

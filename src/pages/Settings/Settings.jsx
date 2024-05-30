@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar";
 import { FaChevronDown } from "react-icons/fa";
 import Calender from "../../assets/Calender.svg";
 import { baseAxios } from "../../utils/apiConfig";
+import Snackbar from "@mui/material/Snackbar";
 import { RotatingLines } from "react-loader-spinner";
 
 const Settings = () => {
@@ -14,16 +15,25 @@ const Settings = () => {
   const [endDate, setEndDate] = useState(false);
   const [endDate2, setEndDate2] = useState("");
   const [selectedImage, setSelectedImage] = useState();
+  const [notificationError, setNotificationError] = useState(false);
+  const [bannerError, setBannerError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [notificationLoading, setNotificationLoading] = useState(false);
   const [targetaudience, setTargetaudience] = useState("");
   const [desc, setDesc] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [bannerSnackbarOpen, setBannerSnackbarOpen] = useState(false);
   const [title, setTitle] = useState("");
   const fileInputRef = useRef(null);
-  const [out, setOut] = useState();
 
   const handleDivClick = () => {
     fileInputRef.current.click();
+  };
+  const handleSnackbarClose = () => {
+    setSnackbarOpen(false);
+  };
+  const handleBannerSnackbarClose = () => {
+    setBannerSnackbarOpen(false);
   };
 
   const handleNotification = async () => {
@@ -31,6 +41,7 @@ const Settings = () => {
 
     if (!desc || !title || !targetaudience) {
       console.log("All fields must be filled");
+      alert("All fields must be filled");
       return;
     }
 
@@ -50,12 +61,19 @@ const Settings = () => {
         }
       );
       setNotificationLoading(false);
-      setOut(response);
+
       console.log("Success");
-      console.log(out);
+      // alert("Notification sent");
+      setTitle("");
+      setDesc("");
+      setTargetaudience("");
+      setSnackbarOpen(true);
     } catch (error) {
       setNotificationLoading(false);
       console.log("Unsuccessful");
+      setSnackbarOpen(true);
+      setNotificationError(true);
+      // alert("Error sending notification");
       console.log("Error submitting notification", error);
     }
   };
@@ -64,6 +82,7 @@ const Settings = () => {
 
     if (!startDate2 || !endDate2 || !selectedImage) {
       console.log("All fields are required");
+      alert("All fields are required");
       return;
     }
 
@@ -82,9 +101,15 @@ const Settings = () => {
         }
       );
       setLoading(false);
-      alert("Successfull");
+      setBannerSnackbarOpen(true);
+      // alert("Banner creation successful");
+      setStartDate2("");
+      setEndDate2("");
+      setSelectedImage();
     } catch (error) {
-      alert("Some issue Occured");
+      // alert("Error creating banner");
+      setBannerSnackbarOpen(true);
+      setBannerError(true);
       console.log("Error creating Banner", error);
     }
   };
@@ -184,6 +209,7 @@ const Settings = () => {
                       onChange={(e) => setEndDate2(e.target.value)}
                       className="px-4 py-2 w-full bg-transparent border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
+
                     <span className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none cursor-pointer">
                       <img src={Calender} alt="Calendar" />
                     </span>
@@ -225,6 +251,7 @@ const Settings = () => {
                 </label>
                 <input
                   type="text"
+                  value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   className="bg-[#F9FAFB] rounded-[10px] px-2 md:w-auto md-1350:w-[605px] h-[46px] py-4"
                 />
@@ -233,6 +260,7 @@ const Settings = () => {
                 </label>
                 <textarea
                   type="text"
+                  value={desc}
                   onChange={(e) => setDesc(e.target.value)}
                   className="bg-[#F9FAFB] rounded-[10px] px-2 md:w-auto md-1350:w-[605px] h-[161px] py-2"
                 />
@@ -284,6 +312,28 @@ const Settings = () => {
           </div>
         </div>
       </div>
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={snackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleSnackbarClose}
+        message={
+          notificationError
+            ? "Error sending notification"
+            : "Notification sent successfully"
+        }
+        key={"top" + "right"}
+      />
+      <Snackbar
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        open={bannerSnackbarOpen}
+        autoHideDuration={3000}
+        onClose={handleBannerSnackbarClose}
+        message={
+          bannerError ? "Error creating Banner" : "Banner creation successful"
+        }
+        key={"top" + "right"}
+      />
     </>
   );
 };
