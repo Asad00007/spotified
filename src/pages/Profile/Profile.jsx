@@ -25,7 +25,7 @@ const Profile = () => {
     fetchProfile();
   }, []);
 
-  const [profileImage, setProfileImage] = useState(Person);
+  const [profileImage, setProfileImage] = useState();
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -35,6 +35,11 @@ const Profile = () => {
         setProfileImage(e.target.result);
       };
       reader.readAsDataURL(file);
+
+      const formData = new FormData();
+      formData.append("img", file);
+
+      updateProfile(formData);
     }
   };
 
@@ -55,6 +60,9 @@ const Profile = () => {
       setName(data.data.full_name);
       setEmail(data.data.email);
       setPhone(data.data.phoneNo);
+      if (data.data.img) {
+        setProfileImage(`https://gosportified.com${data.data.img}`);
+      }
     } catch (error) {
       console.error("Error fetching profile:", error);
     }
