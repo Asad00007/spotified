@@ -201,6 +201,13 @@ const ManageUser = () => {
     setCurrentPage(1);
   };
 
+  function formatNumber(num) {
+    if (num >= 1000) {
+      return (num / 1000).toFixed(1).replace(/\.0$/, "") + "k";
+    }
+    return num;
+  }
+
   const onCancel = () => {
     setCurrent(0);
   };
@@ -430,14 +437,18 @@ const ManageUser = () => {
                     <td className="px-6 py-4">{user.full_name}</td>
                     <td className="px-6 py-4">{user.email}</td>
                     <td className="px-6 py-4">{user.phoneNo}</td>
-                    <td className="px-6 py-4 flex gap-4 items-center">
-                      {" "}
+                    <td className="px-6 py-4 gap-4 items-center whitespace-nowrap">
                       <svg
                         width="10"
                         height="10"
                         viewBox="0 0 10 10"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        style={{
+                          display: "inline-block",
+                          verticalAlign: "middle",
+                          marginRight: "10px",
+                        }}
                       >
                         <circle
                           cx="5"
@@ -446,8 +457,16 @@ const ManageUser = () => {
                           fill={user.approved ? "#04EB0D" : "#EA4335"}
                         />
                       </svg>
-                      {user.approved ? "Active" : "Offline"}
+                      <span
+                        style={{
+                          display: "inline-block",
+                          verticalAlign: "middle",
+                        }}
+                      >
+                        {user.approved ? "Active" : "Offline"}
+                      </span>
                     </td>
+
                     <td className="px-6 py-4">Cricket</td>
                     <td className="px-6 py-4 flex gap-4">
                       <svg
@@ -534,8 +553,9 @@ const ManageUser = () => {
           )}
           <div className="flex justify-between items-center flex-1">
             <span className="text-[#202224] text-[14px] font-normal">
-              Showing {currentPage * 10 - 9}-
-              {Math.min(currentPage * 10, totalUsers)} of {totalUsers}
+              Showing {formatNumber(currentPage * 10 - 9)}-
+              {formatNumber(Math.min(currentPage * 10, totalUsers))} of{" "}
+              {formatNumber(totalUsers)}
             </span>
             <span className="text-[#202224] text-[14px] font-normal">
               Page {currentPage}
