@@ -2,7 +2,7 @@ import React from "react";
 
 const WeeklyChart = ({ data }) => {
   // Calculate the maximum value in data to set the scale
-  const maxValue = Math.max(...data);
+  const maxValue = Math.max(...data) < 10000 ? 10000 : Math.max(...data);
   const chartHeight = 200; // Fixed height for the chart
 
   // Calculate the interval for y-axis labels
