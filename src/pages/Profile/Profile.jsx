@@ -24,6 +24,24 @@ const Profile = () => {
   useEffect(() => {
     fetchProfile();
   }, []);
+
+  const [profileImage, setProfileImage] = useState(Person);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setProfileImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    document.getElementById("fileInput").click();
+  };
+
   const fetchProfile = async () => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
@@ -115,13 +133,28 @@ const Profile = () => {
       <div className="bg-[#FAFBFC] lg:w-[calc(100vw - 345px)] lg:ml-[345px] flex items-center justify-center font-sans">
         <div className="flex flex-col items-center bg-white w-[95%] min-h-[882px] mx-auto max-w-full py-12 my-10 rounded-2xl gap-5 md:gap-10">
           <div className="relative">
-            <div className="min-w-[100px] min-h-[100px] rounded-full overflow-hidden bg-center object-cover ">
-              <img src={Person} alt="" />
+            <div className="min-w-[100px] min-h-[100px] max-w-[100px] max-h-[100px] rounded-full overflow-hidden bg-center object-cover">
+              <img
+                src={profileImage}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center absolute top-14 -right-2">
-              <img src={Edit} alt="" className="cursor-pointer" />
+            <div
+              className="bg-white rounded-full w-[40px] h-[40px] flex items-center justify-center absolute top-14 -right-2 cursor-pointer"
+              onClick={triggerFileInput}
+            >
+              <img src={Edit} alt="Edit" />
             </div>
+            <input
+              id="fileInput"
+              type="file"
+              accept="image/*"
+              style={{ display: "none" }}
+              onChange={handleImageChange}
+            />
           </div>
+
           <div className="flex flex-col w-[90%] md:w-[80%] ">
             <hr />
             <div className="flex py-5">
