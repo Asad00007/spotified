@@ -137,60 +137,60 @@ const Dashboard = () => {
             {!loading ? (
               <div className="flex flex-col items-center md:flex-row gap-2 md-800:gap-4 md-950:gap-6 lg:gap-2 md-1100:gap-5 lg-1780:gap-6 mt-0 md:mt-20">
                 {/* First Orange */}
-                <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#FFF4DE] rounded-2xl p-6 pt-5 justify-between">
-                  <div className="rounded-full bg-[#FF947A] w-fit p-3 md:p-[5px] md-1000:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2">
+                <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] lg:w-[85px] lg:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#FFF4DE] rounded-2xl p-6 pt-5 justify-between">
+                  <div className="rounded-full bg-[#FF947A] w-fit p-3 md:p-[5px] lg:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2">
                     <img
                       src={sportsImg}
                       alt=""
-                      className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] md-1000:w-[10px] md-1000:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"
+                      className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] lg:w-[10px] lg:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"
                     />
                   </div>
-                  <div className="text-[#FF947A] md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold"></div>
-                  <div className=" text-2xl md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-[#FF947A] font-semibold">
+                  <div className="text-[#FF947A] md:text-base lg:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold"></div>
+                  <div className=" text-2xl md:text-base lg:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-[#FF947A] font-semibold">
                     {dashCount?.total_games}
                   </div>
-                  <div className=" text-2xl md:text-[10px] md-1000:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">
+                  <div className=" text-2xl md:text-[10px] lg:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">
                     Total Games
                   </div>
-                  <div className="text-[#FF947A] text-lg md:text-[8px] md-1000:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
+                  <div className="text-[#FF947A] text-lg md:text-[8px] lg:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
                     {dashCount?.match_increase_percentage}% from yesterday
                   </div>
                 </div>
                 {/* Second Green */}
-                <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#D7FFC5] rounded-2xl p-6 pt-5 justify-between">
-                  <div className="rounded-full bg-[#2D8E00] w-fit p-3 md:p-[5px] md-1000:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2">
+                <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] lg:w-[85px] lg:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#D7FFC5] rounded-2xl p-6 pt-5 justify-between">
+                  <div className="rounded-full bg-[#2D8E00] w-fit p-3 md:p-[5px] lg:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2">
                     <img
                       src={union}
                       alt=""
-                      className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] md-1000:w-[10px] md-1000:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"
+                      className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] lg:w-[10px] lg:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"
                     />
                   </div>
-                  <div className="text-[#2D8E00] md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">
+                  <div className="text-[#2D8E00] md:text-base lg:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">
                     {dashCount?.total_organiser}
                   </div>
-                  <div className=" text-2xl md:text-[10px] md-1000:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">
+                  <div className=" whitespace-nowrap text-2xl md:text-[10px] lg:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">
                     Total Organizers
                   </div>
-                  <div className="text-[#2D8E00] text-lg md:text-[8px] md-1000:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
+                  <div className="text-[#2D8E00] text-lg md:text-[8px] lg:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
                     {dashCount?.organiser_increase_percentage}% from yesterday
                   </div>
                 </div>
                 {/* Third Purple */}
-                <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] md-1000:w-[85px] md-1000:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#F3E8FF] rounded-2xl p-6 pt-5 justify-between">
-                  <div className="rounded-full bg-[#BF83FF] w-fit p-3 md:p-[5px] md-1000:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2">
+                <div className=" flex flex-col  w-full h-[265px] md:h-[100px] md:w-[100px] lg:w-[85px] lg:h-[85px] md-1190:min-w-[110px] md-1190:h-[110px] lg-1350:h-[135px] lg-1350:min-w-[135px] lg-1500:h-[150px] lg-1500:min-w-[150px] lg-1500:p-5 lg-1780:min-h-[184px] lg-1780:min-w-[180px] md:p-3 bg-[#F3E8FF] rounded-2xl p-6 pt-5 justify-between">
+                  <div className="rounded-full bg-[#BF83FF] w-fit p-3 md:p-[5px] lg:p-[3px] md-1190:p-[7px] lg-1350:p-[8px] lg-1780:p-[10px] mb-2">
                     <img
                       src={customerIconNew}
                       alt=""
-                      className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] md-1000:w-[10px] md-1000:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"
+                      className="w-[28px] h-[28px] md:w-[12px] md:h-[12px] lg:w-[10px] lg:h-[10px] md-1190:w-[12px] md-1190:h-[12px] lg-1350:w-[15px] lg-1350:h-[15px] lg-1780:w-[19px] lg-1780:h-[19px]"
                     />
                   </div>
-                  <div className="text-[#BF83FF] md:text-base md-1000:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">
+                  <div className="text-[#BF83FF] md:text-base lg:text-xs md-1190:text-[14px] lg-1350:text-[18px] lg-1780:text-[24px] text-4xl font-semibold">
                     {dashCount?.total_user}
                   </div>
-                  <div className=" text-2xl md:text-[10px] md-1000:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">
+                  <div className=" text-2xl md:text-[10px] lg:text-[8px]  font-medium text-[#425166] md-1190:text-[11px] lg-1350:text-[13px] lg-1780:text-[16px] md:leading-none md-1190:leading-normal md-1190:mt-2">
                     Total Users
                   </div>
-                  <div className="text-[#BF83FF] text-lg md:text-[8px] md-1000:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
+                  <div className="text-[#BF83FF] text-lg md:text-[8px] lg:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
                     {dashCount?.user_increase_percentage}% from yesterday
                   </div>
                 </div>
