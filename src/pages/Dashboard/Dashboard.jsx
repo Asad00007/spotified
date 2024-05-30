@@ -15,6 +15,7 @@ import { baseAxios } from "../../utils/apiConfig";
 const Dashboard = () => {
   const [latestGames, setLatestGames] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [loadingGames, setLoadingGames] = useState(false);
   const [selectedGameId, setSelectedGameId] = useState(1);
   const [gamesById, setGamesById] = useState([]);
   const [weeklyData, setWeeklyData] = useState({
@@ -68,6 +69,7 @@ const Dashboard = () => {
   const fetchGames = async () => {
     const accesstoken = sessionStorage.getItem("access_token");
     try {
+      setLoadingGames(true);
       const response = await baseAxios.get("/sports/sports/", {
         headers: { Authorization: `Bearer ${accesstoken}` },
       });
@@ -79,7 +81,9 @@ const Dashboard = () => {
         setSelectedGameId(firstGameId);
         fetchGamesbyId(firstGameId);
       }
+      setLoadingGames(false);
     } catch (error) {
+      setLoadingGames(false);
       console.log("Error Fetching data ", error);
     }
   };
@@ -203,9 +207,9 @@ const Dashboard = () => {
                     Search
                   </label>
                   <div className="relative">
-                    <div
-                      className="flex items-center md:w-[119px] h-[45px] p-4 text-[13px] text-[#999a9b] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
-                    >Weekly</div>
+                    <div className="flex items-center md:w-[119px] h-[45px] p-4 text-[13px] text-[#999a9b] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 ">
+                      Weekly
+                    </div>
                     <div className="absolute inset-y-0 end-0 flex items-center py-2 pr-2 pl-6 pointer-events-none">
                       <svg
                         width="18"
@@ -247,39 +251,27 @@ const Dashboard = () => {
               Latest Games
             </span>
           </div>
-          <div className="flex flex-wrap gap-4">
-            {latestGames?.map((game) => (
-              <div
-                key={game.id}
-                className={`border ${
-                  selectedGameId === game.id
-                    ? "bg-primary text-white"
-                    : "border-secondaryFifty text-secondaryFifty"
-                }  text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center cursor-pointer`}
-                onClick={() => handleTabClick(game.id)}
-              >
-                {game.name}
-              </div>
-            ))}
-            {/* <div className="bg-primary text-[13px] text-white w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-              Cricket
+          {!loadingGames ? (
+            <div className="flex flex-wrap gap-4">
+              {latestGames?.map((game) => (
+                <div
+                  key={game.id}
+                  className={`border ${
+                    selectedGameId === game.id
+                      ? "bg-primary text-white"
+                      : "border-secondaryFifty text-secondaryFifty"
+                  }  text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center cursor-pointer`}
+                  onClick={() => handleTabClick(game.id)}
+                >
+                  {game.name}
+                </div>
+              ))}
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-              Football
+          ) : (
+            <div className="flex items-center justify-center w-full">
+              <RotatingLines color="#123abc" loading={loading} width="40" />
             </div>
-            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-              Badminton
-            </div>
-            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-              Golf
-            </div>
-            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-              Tennis
-            </div>
-            <div className="border border-secondaryFifty text-secondaryFifty text-[13px] w-[100px] md:w-[115px] h-[45px] rounded-lg flex justify-center items-center">
-              Basketball
-            </div> */}
-          </div>
+          )}
         </div>
         {/* Cards */}
         <div className="flex flex-wrap gap-x-2 md-1000:gap-x-4 md-1200:gap-x-6 lg-1350:gap-x-6 lg-1500:gap-x-8 gap-y-14 mb-5 ml-[3%]">
