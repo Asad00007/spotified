@@ -189,8 +189,8 @@ const Dashboard = () => {
               </div>
             )}
           </div>
-          <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-fit py-6 px-2 lg:px-16 shadow-sm">
-            <div className="flex flex-col md:flex-row justify-between">
+          <div className="w-full md:w-1/2 max-w-[645px] rounded-[20px] border border-[#F8F9FA] bg-white md:min-h-[348px] lg:max-h-[348px] py-6 px-2 lg:px-4 md-1100:px-8 md-1200:px-12 lg-1350:px-16 shadow-sm">
+            <div className="flex flex-col md:flex-row justify-between ">
               <span className="w-full text-xl font-semibold text-[#05004E]">
                 Weekly Overview
               </span>
@@ -203,13 +203,9 @@ const Dashboard = () => {
                     Search
                   </label>
                   <div className="relative">
-                    <input
-                      type="search"
-                      id="default-search"
-                      className="block md:w-[119px] h-[45px] p-4 text-[13px] text-[#999a9b] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
-                      placeholder="Weekly"
-                      required
-                    />
+                    <div
+                      className="flex items-center md:w-[119px] h-[45px] p-4 text-[13px] text-[#999a9b] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
+                    >Weekly</div>
                     <div className="absolute inset-y-0 end-0 flex items-center py-2 pr-2 pl-6 pointer-events-none">
                       <svg
                         width="18"
@@ -234,8 +230,8 @@ const Dashboard = () => {
 
             <div className="flex mt-0 md:mt-10">
               {/* <img src={weeklyOverview} alt="" /> */}
-              <WeeklyChart data={transformData(weeklyData)} />;
-              {/* <WeeklyChart data={weeklyDatas} />; */}
+              {/* <WeeklyChart data={transformData(weeklyData)} />  */}
+              <WeeklyChart data={weeklyDatas} />
             </div>
 
             <div className="flex justify-center items-center">
