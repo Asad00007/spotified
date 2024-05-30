@@ -47,7 +47,15 @@ const Dashboard = () => {
   };
 
   const transformData = (data) => {
-    return Object.entries(data).map(([day, count]) => ({ day, count }));
+    return [
+      data.Monday,
+      data.Tuesday,
+      data.Wednesday,
+      data.Thursday,
+      data.Friday,
+      data.Saturday,
+      data.Sunday
+    ];
   };
 
   const fetchCount = async () => {
@@ -234,8 +242,8 @@ const Dashboard = () => {
 
             <div className="flex mt-0 md:mt-6">
               {/* <img src={weeklyOverview} alt="" /> */}
-              {/* <WeeklyChart data={transformData(weeklyData)} />  */}
-              <WeeklyChart data={weeklyDatas} />
+              <WeeklyChart data={transformData(weeklyData)} /> 
+              {/* <WeeklyChart data={weeklyDatas} /> */}
             </div>
 
             <div className="flex justify-center items-center">
