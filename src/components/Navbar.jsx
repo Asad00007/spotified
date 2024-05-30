@@ -8,11 +8,11 @@ import { FaChevronDown } from "react-icons/fa";
 const Navbar = ({ text }) => {
   const location = useLocation();
   return (
-    <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] h-auto md:min-h-[120px] flex items-center">
+    <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] h-auto md:max-h-[120px] flex items-center">
       <nav className="bg-white border-gray-200 w-full">
         <div className=" flex flex-col md:flex-row justify-between items-center p-4 gap-2">
           <a className="flex items-center justify-center md:justify-start space-x-3 rtl:space-x-reverse w-[200px] lg-1350:w-[350px]">
-            <span className=" text-center text-xl md:text-4xl font-semibold ml-0 md:ml-6">
+            <span className=" text-center text-xl md:text-[32px] font-semibold ml-0 ">
               {text}
             </span>
           </a>
@@ -26,18 +26,18 @@ const Navbar = ({ text }) => {
                 >
                   Search
                 </label>
-                <div className="relative">
-                  <div className="absolute inset-y-0 start-0 flex items-center py-2 ml-2 pointer-events-none">
-                    <img
-                      className="w-[28px] h-[28px] md:w-auto md:h-auto"
-                      src={searchIcon}
-                      alt=""
-                    />
-                  </div>
+                <div className="relative flex w-[300px] md:[400px] lg-1300:w-[513px] md:ml-4 h-[60px] p-4 text-md md:text-lg text-[#737791] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 gap-2">
+                  {/* <div className="absolute inset-x-10 inset-y-0 start-0 flex items-center py-2 ml-2 pointer-events-none"> */}
+                  <img
+                    className="w-[28px] h-[28px] md:w-auto md:h-auto"
+                    src={searchIcon}
+                    alt=""
+                  />
+                  {/* </div> */}
                   <input
                     type="search"
                     id="default-search"
-                    className="block w-[300px] md:[400px] lg-1300:w-[513px] md:ml-4 h-[60px] p-4 ps-10 text-md md:text-lg text-[#737791] rounded-lg bg-[#F9FAFB] focus:ring-blue-500 focus:border-blue-500 "
+                    className="flex flex-1 bg-transparent outline-none placeholder-[#737791]"
                     placeholder="Search here..."
                     required
                   />
@@ -56,7 +56,7 @@ const Navbar = ({ text }) => {
                 className=" w-[60px] h-[60px] rounded-full"
               />
               <div className="flex flex-col">
-                <span className="text-primary text-base font-medium">
+                <span className="text-primary text-base font-medium md-1200:w-[90px]">
                   Abdul Hadi
                 </span>
                 <span className="text-[#737791] text-sm font-normal">

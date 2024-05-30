@@ -214,13 +214,13 @@ const OrganizerRequest = () => {
                     <td className="px-6 py-4">{requests.address}</td>
                     <td className="px-6 py-4 flex gap-4">
                       <div
-                        className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
+                        className="border border-primary h-[30px] text-primary rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px] cursor-pointer"
                         onClick={() => handleConfirm(requests.id)}
                       >
                         Confirm
                       </div>
                       <div
-                        className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px]"
+                        className="border border-[#EA4335] h-[30px] text-[#EA4335] rounded-[50px] text-sm font-semibold flex justify-center items-center w-[90px] cursor-pointer"
                         onClick={() => handleReject(requests.id)}
                       >
                         Deny

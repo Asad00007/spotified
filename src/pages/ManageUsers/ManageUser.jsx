@@ -5,8 +5,10 @@ import filterIcon from "../../assets/filterIcon.svg";
 import lineFilter from "../../assets/lineFilter.svg";
 import downArrow from "../../assets/downArrow.svg";
 import Cancel from "../../assets/icons/Cancel.svg";
+import { RotatingLines } from "react-loader-spinner";
 import deleteIcon from "../../assets/deleteIcon.svg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import Popup from "../../components/Popup";
 import { baseAxios } from "../../utils/apiConfig";
 
 const ManageUser = () => {
@@ -18,7 +20,8 @@ const ManageUser = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
   const [perPage, setPerPage] = useState(10);
-
+  const [loading, setLoading] = useState(false);
+  const [current, setCurrent] = useState(0);
   const [isStatusDropdownOpen, setIsStatusDropdownOpen] = useState(false);
   const [isSportsDropdownOpen, setIsSportsDropdownOpen] = useState(false);
   const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
@@ -29,6 +32,7 @@ const ManageUser = () => {
   const fetchUsers = async (offset = 0) => {
     const accessToken = sessionStorage.getItem("access_token");
     try {
+      setLoading(true);
       const response = await baseAxios.get(
         `/admin_side/get_users/?role=user&limit=${perPage}&offset=${offset}`,
         {
@@ -39,9 +43,16 @@ const ManageUser = () => {
       setAllUsers(data.results);
       setTotalUsers(data.count);
       setUsers(data.results.slice(0, 10));
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error("Error fetching users:", error);
     }
+  };
+
+  const deleteUser = (id) => {
+    handleDelete(id);
+    setCurrent(0);
   };
 
   const handleDelete = async (id) => {
@@ -188,6 +199,10 @@ const ManageUser = () => {
     fetchUsers(0);
     setPerPage(10);
     setCurrentPage(1);
+  };
+
+  const onCancel = () => {
+    setCurrent(0);
   };
   return (
     <div>
@@ -395,94 +410,128 @@ const ManageUser = () => {
                 </th>
               </tr>
             </thead>
-            <tbody>
-              {users.map((user) => (
-                <tr className="bg-white border-b text-[#202224]" key={user.id}>
-                  <th
-                    scope="row"
-                    className="px-6 py-4 font-medium whitespace-nowrap"
+            {!loading && (
+              <tbody>
+                {users.map((user) => (
+                  <tr
+                    className="bg-white border-b text-[#202224]"
+                    key={user.id}
                   >
-                    <input className="mr-2 accent-[#E0E0E0]" type="checkbox" />#
-                    {user.id}
-                  </th>
-                  <td className="px-6 py-4">{user.full_name}</td>
-                  <td className="px-6 py-4">{user.email}</td>
-                  <td className="px-6 py-4">{user.phoneNo}</td>
-                  <td className="px-6 py-4 flex gap-4 items-center">
-                    {" "}
-                    <svg
-                      width="10"
-                      height="10"
-                      viewBox="0 0 10 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <th
+                      scope="row"
+                      className="px-6 py-4 font-medium whitespace-nowrap"
                     >
-                      <circle
-                        cx="5"
-                        cy="5"
-                        r="5"
-                        fill={user.approved ? "#04EB0D" : "#EA4335"}
+                      <input
+                        className="mr-2 accent-[#E0E0E0]"
+                        type="checkbox"
                       />
-                    </svg>
-                    {user.approved ? "Active" : "Offline"}
-                  </td>
-                  <td className="px-6 py-4">Cricket</td>
-                  <td className="px-6 py-4 flex gap-4">
-                    <svg
-                      width="30"
-                      height="30"
-                      viewBox="0 0 30 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      onClick={() => handleDelete(user.id)}
-                      className="cursor-pointer"
-                    >
-                      <rect
-                        x="0.5"
-                        y="0.5"
-                        width="29"
-                        height="29"
-                        rx="4.5"
-                        stroke="#393939"
-                        strokeOpacity="0.5"
-                      />
-                      <path
-                        d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
-                        stroke="#393939"
-                        strokeOpacity="0.5"
-                      />
-                      <path
-                        d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
-                        stroke="#393939"
-                        strokeOpacity="0.5"
-                      />
-                      <path
-                        d="M8 10.206H22"
-                        stroke="#393939"
-                        strokeOpacity="0.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    {user.approved ? (
-                      <button
-                        className=" text-white px-[5px] py-[5px] rounded ml-2 border border-gray-400 "
-                        onClick={() => handleBlock(user.id)}
+                      #{user.id}
+                    </th>
+                    <td className="px-6 py-4">{user.full_name}</td>
+                    <td className="px-6 py-4">{user.email}</td>
+                    <td className="px-6 py-4">{user.phoneNo}</td>
+                    <td className="px-6 py-4 flex gap-4 items-center">
+                      {" "}
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 10 10"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <img src={Cancel} alt="" />
-                      </button>
-                    ) : (
-                      <button
-                        className=" text-white px-[5px] py-[5px] rounded ml-2 border border-gray-400 bg-gray-200"
-                        onClick={() => handleunBlock(user.id)}
+                        <circle
+                          cx="5"
+                          cy="5"
+                          r="5"
+                          fill={user.approved ? "#04EB0D" : "#EA4335"}
+                        />
+                      </svg>
+                      {user.approved ? "Active" : "Offline"}
+                    </td>
+                    <td className="px-6 py-4">Cricket</td>
+                    <td className="px-6 py-4 flex gap-4">
+                      <svg
+                        width="30"
+                        height="30"
+                        viewBox="0 0 30 30"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        onClick={() => setCurrent(1)}
+                        className="cursor-pointer"
                       >
-                        <img src={Cancel} alt="" />
-                      </button>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="29"
+                          height="29"
+                          rx="4.5"
+                          stroke="#393939"
+                          strokeOpacity="0.5"
+                        />
+                        <path
+                          d="M11.8887 10.2219L11.8887 8.92181C11.8887 8.01586 11.8887 7.56289 12.1604 7.28144C12.4322 7 12.8696 7 13.7444 7L16.2551 7C17.13 7 17.5674 7 17.8391 7.28144C18.1109 7.56289 18.1109 8.01586 18.1109 8.92181V10.2219"
+                          stroke="#393939"
+                          strokeOpacity="0.5"
+                        />
+                        <path
+                          d="M20.0318 17.549C19.8836 18.8906 19.8162 19.4559 19.6295 19.9033C19.2228 20.878 18.3978 21.6169 17.3844 21.9141C16.9191 22.0506 16.3499 22.0556 15 22.0556C13.6502 22.0556 13.081 22.0506 12.6157 21.9141C11.6023 21.6169 10.7773 20.878 10.3706 19.9033C10.1839 19.4559 10.1165 18.8906 9.96827 17.5489L9.15308 10.1681L20.847 10.1681L20.0318 17.549Z"
+                          stroke="#393939"
+                          strokeOpacity="0.5"
+                        />
+                        <path
+                          d="M8 10.206H22"
+                          stroke="#393939"
+                          strokeOpacity="0.5"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                      {current === 1 && (
+                        <Popup setTrigger={setCurrent}>
+                          <h1 className="text-xl font-bold mt-5 mb-3">
+                            Are you sure you want to delete this user?
+                          </h1>
+                          <div className="flex gap-5 mb-5">
+                            <button
+                              className="border-2 border-primary p-[3px] text-[13px] md:text-base w-[90px] md:w-[100px] rounded-md"
+                              onClick={onCancel}
+                            >
+                              No
+                            </button>
+                            <button
+                              className="bg-primary p-[3px] text-[13px] md:text-base w-[90px] md:w-[100px] rounded-md text-white"
+                              onClick={() => deleteUser(user.id)}
+                            >
+                              Yes
+                            </button>
+                          </div>
+                        </Popup>
+                      )}
+                      {user.approved ? (
+                        <button
+                          className=" text-white px-[5px] py-[5px] rounded ml-2 border border-gray-400 "
+                          onClick={() => handleBlock(user.id)}
+                        >
+                          <img src={Cancel} alt="" />
+                        </button>
+                      ) : (
+                        <button
+                          className=" text-white px-[5px] py-[5px] rounded ml-2 border border-gray-400 bg-gray-200"
+                          onClick={() => handleunBlock(user.id)}
+                        >
+                          <img src={Cancel} alt="" />
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            )}
           </table>
+          {loading && (
+            <div className="flex items-center justify-center mt-5">
+              <RotatingLines color="#123abc" loading={loading} width="40" />
+            </div>
+          )}
           <div className="flex justify-between items-center flex-1">
             <span className="text-[#202224] text-[14px] font-normal">
               Showing {currentPage * 10 - 9}-
