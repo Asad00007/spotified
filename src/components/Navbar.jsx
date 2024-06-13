@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img from "../assets/da.png";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import searchIcon from "../assets/searchIcon.svg";
 import { FaChevronDown } from "react-icons/fa";
+import { baseAxios } from "../utils/apiConfig";
 
 const Navbar = ({ text }) => {
+  const [profileImage, setProfileImage] = useState();
+
+  useEffect(() => {
+    fetchProfile();
+  }, []);
+
+  const fetchProfile = async () => {
+    const accessToken = sessionStorage.getItem("access_token");
+    try {
+      const response = await baseAxios.get("/auth/get_profile/", {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      const data = response.data;
+
+      if (data.data.img) {
+        setProfileImage(`https://gosportified.com${data.data.img}`);
+      }
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
   const location = useLocation();
   return (
     <div className="lg:w-[cal(100vw- 345px)] ml-0 lg:ml-[345px] h-auto md:max-h-[120px] flex items-center">
@@ -51,7 +75,7 @@ const Navbar = ({ text }) => {
           >
             <Link to="/profile" className="flex gap-3">
               <img
-                src={img}
+                src={profileImage || img}
                 alt="Avatar icon"
                 className=" w-[60px] h-[60px] rounded-full"
               />
