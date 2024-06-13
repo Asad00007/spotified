@@ -12,7 +12,7 @@ import Cancel from "../../assets/icons/Cancel.svg";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 const ManageOrganizer = () => {
-  const text = "Manage Organizer";
+  const text = "Manage Organizers";
 
   const [organizers, setOrganizers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -249,8 +249,13 @@ const ManageOrganizer = () => {
             </thead>
             {!loading && (
               <tbody>
-                {organizers.map((org) => (
-                  <tr className="bg-white border-b text-[#202224]">
+                {organizers.map((org, index) => (
+                  <tr
+                    className={`${
+                      index % 2 !== 0 ? "bg-[#F9FAFB]" : "bg-white"
+                    } border-b text-[#202224]`}
+                    key={index}
+                  >
                     <th
                       scope="row"
                       className="px-6 py-4 font-medium whitespace-nowrap"

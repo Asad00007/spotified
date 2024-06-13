@@ -11,6 +11,7 @@ const SignIn = () => {
   const [password, setPassword] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState(false);
 
   const { login } = useAuth();
   const navigate = useNavigate();
@@ -36,12 +37,16 @@ const SignIn = () => {
       sessionStorage.setItem("access_token", response.data.data.access_token);
       if (response.status === 200) {
         login();
-        navigate("/");
+        navigate("/otp");
       } else {
         setSnackbarOpen(true);
       }
     } catch (error) {
       console.error("Error logging in:", error);
+      setErrorMsg(
+        error.response?.data?.msg ||
+          "Login Failed! Check credentials and try again"
+      );
       setSnackbarOpen(true);
     } finally {
       setLoading(false);
@@ -92,7 +97,7 @@ const SignIn = () => {
               <div className="flex gap-3">
                 <input
                   type="checkbox"
-                  className="bg-primary accent-primary w-6"
+                  className="bg-primary accent-primary w-6 cursor-pointer"
                   id="keep-logged-in"
                 />
                 <span className="font-normal text-secondary text-[18px]">
@@ -121,7 +126,7 @@ const SignIn = () => {
           open={snackbarOpen}
           autoHideDuration={5000}
           onClose={handleSnackbarClose}
-          message="Login Failed! Check credentials and try again"
+          message={errorMsg}
           key={"top" + "right"}
         />
       </div>

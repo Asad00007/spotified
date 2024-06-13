@@ -31,46 +31,53 @@ const WeeklyChart = ({ data }) => {
         {data.map((value, index) => {
           const height = (value / maxValue) * chartHeight;
           return (
-          <>
-            <div
-              key={index}
-              className="  md:block hidden   absolute bg-primary  bottom-0 transition-all duration-500"
-              style={{
-                left: `${((index+0.5) * (100 / data.length))}%`,
-                height: `${height}px`,
-                width: `10px`,    
-                bottom: 0,
-              }}
-            />
-            <div
-              key={index}
-              className=" sm:block md:hidden hidden   absolute bg-primary  bottom-0 transition-all duration-500"
-              style={{
-                left: `${((index+0.5) * (100 / data.length))}%`,
-                height: `${height}px`,
-                width: `10px`,
-                bottom: 0,
-              }}
-            />
-            <div
-              key={index}
-              className=" sm:hidden md:hidden    absolute bg-primary  bottom-0 transition-all duration-500"
-              style={{
-                left: `${((index+0.5) * (100 / data.length))}%`,
-                height: `${height}px`,
-                width: `10px`,
-                bottom: 0,
-              }}
-            />
-          </>
-        )})}
-         {/* X-axis labels */}
-         <div className="absolute left-0 right-0 flex justify-between px-2 ml-2 mt-2 bottom-[-1.5rem]">
-          {["Mon", "Tues", "Wed", "Thus", "Fri", "Sat", "Sun"].map((day, index) => (
-            <div key={index} className="text-sm text-gray-700" style={{ width: `${100 / data.length}%`, textAlign: 'center' }}>
-              {day}
-            </div>
-          ))}
+            <>
+              <div
+                key={index}
+                className="  md:block hidden   absolute bg-primary  bottom-0 transition-all duration-500"
+                style={{
+                  left: `${(index + 0.5) * (100 / data.length)}%`,
+                  height: `${height}px`,
+                  width: `10px`,
+                  bottom: 0,
+                }}
+              />
+              <div
+                key={index}
+                className=" sm:block md:hidden hidden   absolute bg-primary  bottom-0 transition-all duration-500"
+                style={{
+                  left: `${(index + 0.5) * (100 / data.length)}%`,
+                  height: `${height}px`,
+                  width: `10px`,
+                  bottom: 0,
+                }}
+              />
+              <div
+                key={index}
+                className=" sm:hidden md:hidden    absolute bg-primary  bottom-0 transition-all duration-500"
+                style={{
+                  left: `${(index + 0.5) * (100 / data.length)}%`,
+                  height: `${height}px`,
+                  width: `10px`,
+                  bottom: 0,
+                }}
+              />
+            </>
+          );
+        })}
+        {/* X-axis labels */}
+        <div className="absolute left-0 right-0 flex justify-between px-2 ml-2 mt-2 bottom-[-1.5rem]">
+          {["MON", "TUES", "WED", "THURS", "FRI", "SAT", "SUN"].map(
+            (day, index) => (
+              <div
+                key={index}
+                className="text-sm text-gray-700"
+                style={{ width: `${100 / data.length}%`, textAlign: "center" }}
+              >
+                {day}
+              </div>
+            )
+          )}
         </div>
       </div>
     </div>

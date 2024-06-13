@@ -121,7 +121,7 @@ const Settings = () => {
       <div className="bg-[#FAFBFC] lg:w-[calc(100vw - 345px)] lg:ml-[345px] flex items-center justify-center font-sans">
         <div className="flex flex-col bg-white w-[95%] min-h-[882px] mx-auto max-w-full px-7 my-10 rounded-2xl">
           <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-            <div className="flex flex-col gap-1 min-w-[300px] md-1000:min-w-[250px] md:border-r md-800:pr-12 md-1200:pr-5 w-[300px] md-1000:w-auto ">
+            <div className="flex flex-col gap-1 min-w-[300px] md-1000:min-w-[250px] md-1190:min-w-[280px]  lg-1350:min-w-[370px] md:border-r md-800:pr-12 md-1200:pr-5 w-[300px] md-1000:w-auto ">
               <div className="py-3 md:py-7">
                 <h1 className="font-semibold text-2xl text-[#393939] md:min-w-[230px] ">
                   Create Promo Code
@@ -229,7 +229,7 @@ const Settings = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row gap-2 md:gap-6">
-            <div className="flex flex-col gap-1 min-w-[300px] md-1000:min-w-[250px] md:border-r md-1200:pr-5 w-[300px] md-1000:w-auto ">
+            <div className="flex flex-col gap-1 min-w-[300px] md-1000:min-w-[250px] md-1190:min-w-[280px] lg-1350:min-w-[370px] md:border-r md-1200:pr-5 w-[300px] md-1000:w-auto ">
               <div className="py-3 md:py-7">
                 <h1 className="font-semibold text-2xl text-[#393939]">
                   Create Notifications

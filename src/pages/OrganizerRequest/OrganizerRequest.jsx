@@ -10,7 +10,7 @@ import downArrow from "../../assets/downArrow.svg";
 import deleteIcon from "../../assets/deleteIcon.svg";
 import { baseAxios } from "../../utils/apiConfig";
 const OrganizerRequest = () => {
-  const text = "Organizer Request";
+  const text = "Organizers Requests";
   const [getRequests, setGetRequests] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalUsers, setTotalUsers] = useState(0);
@@ -99,7 +99,7 @@ const OrganizerRequest = () => {
 
       <div className="bg-[#FAFBFC] h-screen lg:w-[calc(100vw - 345px)] lg:ml-[345px]">
         <div className="h-6"></div>
-        <div className="mx-auto md:ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0  w-[90%] md:w-[95%] h-[70px] bg-white rounded-[15px]">
+        {/* <div className="mx-auto md:ml-8 flex justify-center md:justify-start items-center flex-wrap mb-12 md:mb-24 lg:mb-0  w-[90%] md:w-[95%] h-[70px] bg-white rounded-[15px]">
           <div className=" flex">
             <div className="flex justify-center items-center px-2 md:px-12">
               <img
@@ -164,7 +164,7 @@ const OrganizerRequest = () => {
               <img src={deleteIcon} alt="" />
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="h-0 md:h-6"></div>
 
         <div className="relative overflow-x-auto rounded-[15px] m-6">

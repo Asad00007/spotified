@@ -54,7 +54,7 @@ const Dashboard = () => {
       data.Thursday,
       data.Friday,
       data.Saturday,
-      data.Sunday
+      data.Sunday,
     ];
   };
 
@@ -124,6 +124,22 @@ const Dashboard = () => {
   useEffect(() => {
     fetchGamesbyId(selectedGameId);
   }, [selectedGameId]);
+
+  const formatDateTime = (dateTimeStr) => {
+    const date = new Date(dateTimeStr);
+
+    const dateOptions = { weekday: "short", day: "2-digit", month: "short" };
+    const formattedDate = new Intl.DateTimeFormat("en-US", dateOptions).format(
+      date
+    );
+
+    const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
+    const formattedTime = new Intl.DateTimeFormat("en-US", timeOptions).format(
+      date
+    );
+
+    return `${formattedDate}, ${formattedTime}`;
+  };
   return (
     <div>
       <Sidebar active={1} />
@@ -153,7 +169,7 @@ const Dashboard = () => {
                     Total Games
                   </div>
                   <div className="text-[#FF947A] text-lg md:text-[8px] lg:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
-                    {dashCount?.match_increase_percentage}% from yesterday
+                    +{dashCount?.match_increase_percentage}% from yesterday
                   </div>
                 </div>
                 {/* Second Green */}
@@ -172,7 +188,7 @@ const Dashboard = () => {
                     Total Organizers
                   </div>
                   <div className="text-[#2D8E00] text-lg md:text-[8px] lg:text-[6px] md-1190:text-[8px] lg-1350:text-[10px] lg-1780:text-[12px] md-1190:leading-none whitespace-nowrap">
-                    {dashCount?.organiser_increase_percentage}% from yesterday
+                    +{dashCount?.organiser_increase_percentage}% from yesterday
                   </div>
                 </div>
                 {/* Third Purple */}
@@ -242,13 +258,13 @@ const Dashboard = () => {
 
             <div className="flex mt-0 md:mt-6">
               {/* <img src={weeklyOverview} alt="" /> */}
-              <WeeklyChart data={transformData(weeklyData)} /> 
-              {/* <WeeklyChart data={weeklyDatas} /> */}
+              {/* <WeeklyChart data={transformData(weeklyData)} /> */}
+              <WeeklyChart data={weeklyDatas} />
             </div>
 
             <div className="flex justify-center items-center">
-              <span className="mt-6 h-5 text-base font-medium text-[#393939]">
-                No of games
+              <span className="mt-6 h-5 text-base font-bold text-[#393939]">
+                No of Games
               </span>
             </div>
           </div>
@@ -288,8 +304,14 @@ const Dashboard = () => {
               className="bg-white rounded-lg overflow-hidden w-[31%] min-w-[300px] md:min-w-[210px] max-w-[460px]"
               key={games.id}
             >
-              <div className="px-6 py-4">
-                <div className=" font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] bg-[#49D3FF] rounded-md px-8 py-1 flex justify-center text-center">
+              <div className="px-3 py-4">
+                <div
+                  className={` font-medium text-[12px] text-white mb-2 w-[140px] h-[25px] ${
+                    games.game_type === "tournament"
+                      ? "bg-[#49D3FF]"
+                      : "bg-[#2D8E00]"
+                  } rounded-md px-8 py-1 flex justify-center text-center uppercase`}
+                >
                   {games.game_type}
                 </div>
                 <div className="flex items-center gap-4">
@@ -324,7 +346,7 @@ const Dashboard = () => {
                       4
                     </p>
                   </div>
-                  <div className="text-secondary text-[14px] ">
+                  <div className="text-secondary text-[14px] font-bold ">
                     Players 6/
                     <span className=" text-secondaryFifty">
                       {games.players_limit}
@@ -334,7 +356,7 @@ const Dashboard = () => {
               </div>
               <div className="px-6 pb-4">
                 <div className="text-secondary text-[14px]">
-                  {games.game_date_time}
+                  {formatDateTime(games.game_date_time)}
                 </div>
                 <div className=" font-semibold text-[18px] mb-2">
                   {games.title}

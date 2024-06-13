@@ -12,7 +12,7 @@ import Popup from "../../components/Popup";
 import { baseAxios } from "../../utils/apiConfig";
 
 const ManageUser = () => {
-  const text = "Manage User";
+  const text = "Manage Users";
 
   const [allUsers, setAllUsers] = useState([]);
   const [users, setUsers] = useState([]);
@@ -412,10 +412,12 @@ const ManageUser = () => {
             </thead>
             {!loading && (
               <tbody>
-                {users.map((user) => (
+                {users.map((user, index) => (
                   <tr
-                    className="bg-white border-b text-[#202224]"
-                    key={user.id}
+                    className={`${
+                      index % 2 !== 0 ? "bg-[#F9FAFB]" : "bg-white"
+                    } border-b text-[#202224]`}
+                    key={index}
                   >
                     <th
                       scope="row"

@@ -182,7 +182,7 @@ const Sidebar = ({ active }) => {
             <li className="w-[252px]">
               <Link
                 to="/manage-communities"
-                className={`flex items-center py-4 px-6 gap-4 rounded-2xl group ${
+                className={`flex items-center py-4 px-4 gap-4 rounded-2xl group ${
                   active === 4 ? "bg-primary text-white" : "text-secondary"
                 }`}
               >
