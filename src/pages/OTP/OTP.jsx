@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import Logo from "../../assets/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const OTP = () => {
+  const navigate = useNavigate();
   const inputRefs = useRef([]);
 
   useEffect(() => {
@@ -61,7 +63,10 @@ const OTP = () => {
             </span>
           </div>
           <div className="mt-8 flex justify-center items-center">
-            <button className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]">
+            <button
+              className="w-[390px] p-4 text-xl font-semibold text-white bg-primary rounded-[50px]"
+              onClick={() => navigate("/")}
+            >
               Verify
             </button>
           </div>
