@@ -128,18 +128,39 @@ const Dashboard = () => {
   const formatDateTime = (dateTimeStr) => {
     const date = new Date(dateTimeStr);
 
-    const dateOptions = { weekday: "short", day: "2-digit", month: "short" };
-    const formattedDate = new Intl.DateTimeFormat("en-US", dateOptions).format(
+    // Extract the weekday, day, and month
+    const weekdayOptions = { weekday: "short" };
+    const dayOptions = { day: "2-digit" };
+    const monthOptions = { month: "short" };
+
+    const formattedWeekday = new Intl.DateTimeFormat(
+      "en-US",
+      weekdayOptions
+    ).format(date);
+    const formattedDay = new Intl.DateTimeFormat("en-US", dayOptions).format(
       date
     );
+    const formattedMonth = new Intl.DateTimeFormat(
+      "en-US",
+      monthOptions
+    ).format(date);
 
+    // Combine the date components in the desired order
+    const formattedDate = `${formattedWeekday} ${formattedDay} ${formattedMonth}`;
+
+    // Format the time
     const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: true };
     const formattedTime = new Intl.DateTimeFormat("en-US", timeOptions).format(
       date
     );
 
+    // Combine the date and time
     return `${formattedDate}, ${formattedTime}`;
   };
+
+  // Example usage
+  console.log(formatDateTime("2023-06-12T20:34:00")); // Output: Wed 12 Jun, 08:34 PM
+
   return (
     <div>
       <Sidebar active={1} />

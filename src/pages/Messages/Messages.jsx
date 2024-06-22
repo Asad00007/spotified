@@ -293,10 +293,22 @@ const Messages = () => {
                     className="text-base font-[400] text-[#393939] bg-transparent flex-1 mr-3 outline-none"
                   />
                   <div className="flex gap-2 items-center">
-                    <img src={Smile} alt="" className="w-[16px] h-[16px]" />
-                    <img src={Mic} alt="" className="w-[16px] h-[16px]" />
-                    <img src={PaperClip} alt="" className="w-[16px] h-[16px]" />
-                    <div className="w-[23px] h-[23px] bg-[#2D8E00] flex items-center justify-center rounded-full border-l border-gray-300 ml-2">
+                    <img
+                      src={Smile}
+                      alt=""
+                      className="w-[16px] h-[16px] cursor-pointer"
+                    />
+                    <img
+                      src={Mic}
+                      alt=""
+                      className="w-[16px] h-[16px] cursor-pointer"
+                    />
+                    <img
+                      src={PaperClip}
+                      alt=""
+                      className="w-[16px] h-[16px] cursor-pointer"
+                    />
+                    <div className="min-w-[23px] h-[23px] bg-[#2D8E00] flex items-center justify-center rounded-full border-l border-gray-300 ml-2 cursor-pointer">
                       <img src={PaperPlane} alt="" />
                     </div>
                   </div>
@@ -508,10 +520,22 @@ const Messages = () => {
                     className="text-base font-[400] text-[#393939] bg-transparent flex-1 mr-3 outline-none"
                   />
                   <div className="flex gap-2 items-center">
-                    <img src={Smile} alt="" className="w-[16px] h-[16px]" />
-                    <img src={Mic} alt="" className="w-[16px] h-[16px]" />
-                    <img src={PaperClip} alt="" className="w-[16px] h-[16px]" />
-                    <div className="w-[23px] h-[23px] bg-[#2D8E00] flex items-center justify-center rounded-full border-l border-gray-300 ml-2">
+                    <img
+                      src={Smile}
+                      alt=""
+                      className="w-[16px] h-[16px] cursor-pointer"
+                    />
+                    <img
+                      src={Mic}
+                      alt=""
+                      className="w-[16px] h-[16px] cursor-pointer"
+                    />
+                    <img
+                      src={PaperClip}
+                      alt=""
+                      className="w-[16px] h-[16px] cursor-pointer"
+                    />
+                    <div className="w-[23px] h-[23px] bg-[#2D8E00] flex items-center justify-center rounded-full border-l border-gray-300 ml-2 cursor-pointer">
                       <img src={PaperPlane} alt="" />
                     </div>
                   </div>
